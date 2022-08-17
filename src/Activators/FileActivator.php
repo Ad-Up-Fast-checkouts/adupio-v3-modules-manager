@@ -48,7 +48,7 @@ class FileActivator implements ActivatorInterface
      *
      * @var array
      */
-    private $modulesStatuses;
+    private $cmssStatuses;
 
     /**
      * File used to store activation statuses
@@ -65,7 +65,7 @@ class FileActivator implements ActivatorInterface
         $this->statusesFile = $this->config('statuses-file');
         $this->cacheKey = $this->config('cache-key');
         $this->cacheLifetime = $this->config('cache-lifetime');
-        $this->modulesStatuses = $this->getCMSsStatuses();
+        $this->cmssStatuses = $this->getCMSsStatuses();
     }
 
     /**
@@ -86,44 +86,44 @@ class FileActivator implements ActivatorInterface
         if ($this->files->exists($this->statusesFile)) {
             $this->files->delete($this->statusesFile);
         }
-        $this->modulesStatuses = [];
+        $this->cmssStatuses = [];
         $this->flushCache();
     }
 
     /**
      * @inheritDoc
      */
-    public function enable(CMS $module): void
+    public function enable(CMS $cms): void
     {
-        $this->setActiveByName($module->getName(), true);
+        $this->setActiveByName($cms->getName(), true);
     }
 
     /**
      * @inheritDoc
      */
-    public function disable(CMS $module): void
+    public function disable(CMS $cms): void
     {
-        $this->setActiveByName($module->getName(), false);
+        $this->setActiveByName($cms->getName(), false);
     }
 
     /**
      * @inheritDoc
      */
-    public function hasStatus(CMS $module, bool $status): bool
+    public function hasStatus(CMS $cms, bool $status): bool
     {
-        if (!isset($this->modulesStatuses[$module->getName()])) {
+        if (!isset($this->cmssStatuses[$cms->getName()])) {
             return $status === false;
         }
 
-        return $this->modulesStatuses[$module->getName()] === $status;
+        return $this->cmssStatuses[$cms->getName()] === $status;
     }
 
     /**
      * @inheritDoc
      */
-    public function setActive(CMS $module, bool $active): void
+    public function setActive(CMS $cms, bool $active): void
     {
-        $this->setActiveByName($module->getName(), $active);
+        $this->setActiveByName($cms->getName(), $active);
     }
 
     /**
@@ -131,7 +131,7 @@ class FileActivator implements ActivatorInterface
      */
     public function setActiveByName(string $name, bool $status): void
     {
-        $this->modulesStatuses[$name] = $status;
+        $this->cmssStatuses[$name] = $status;
         $this->writeJson();
         $this->flushCache();
     }
@@ -139,12 +139,12 @@ class FileActivator implements ActivatorInterface
     /**
      * @inheritDoc
      */
-    public function delete(CMS $module): void
+    public function delete(CMS $cms): void
     {
-        if (!isset($this->modulesStatuses[$module->getName()])) {
+        if (!isset($this->cmssStatuses[$cms->getName()])) {
             return;
         }
-        unset($this->modulesStatuses[$module->getName()]);
+        unset($this->cmssStatuses[$cms->getName()]);
         $this->writeJson();
         $this->flushCache();
     }
@@ -154,7 +154,7 @@ class FileActivator implements ActivatorInterface
      */
     private function writeJson(): void
     {
-        $this->files->put($this->statusesFile, json_encode($this->modulesStatuses, JSON_PRETTY_PRINT));
+        $this->files->put($this->statusesFile, json_encode($this->cmssStatuses, JSON_PRETTY_PRINT));
     }
 
     /**
