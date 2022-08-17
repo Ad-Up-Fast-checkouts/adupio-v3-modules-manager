@@ -4,9 +4,9 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Str;
-use NAdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use NAdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 
 class ComponentViewMakeCommand extends GeneratorCommand
