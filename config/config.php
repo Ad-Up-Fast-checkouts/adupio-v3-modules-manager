@@ -71,7 +71,7 @@ return [
         |
         */
 
-        'modules' => base_path('CMSs'),
+        'cmss' => base_path('CMSs'),
         /*
         |--------------------------------------------------------------------------
         | CMSs assets path
@@ -81,7 +81,7 @@ return [
         |
         */
 
-        'assets' => public_path('modules'),
+        'assets' => public_path('cmss'),
         /*
         |--------------------------------------------------------------------------
         | The migrations path
@@ -265,7 +265,7 @@ return [
     'activators' => [
         'file' => [
             'class' => FileActivator::class,
-            'statuses-file' => base_path('modules_statuses.json'),
+            'statuses-file' => base_path('cmss_statuses.json'),
             'cache-key' => 'activator.installed',
             'cache-lifetime' => 604800,
         ],
