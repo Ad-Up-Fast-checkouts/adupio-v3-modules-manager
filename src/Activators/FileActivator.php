@@ -179,7 +179,7 @@ class FileActivator implements ActivatorInterface
      */
     private function getCMSsStatuses(): array
     {
-        if (!$this->config->get('modules.cache.enabled')) {
+        if (!$this->config->get('cmss.cache.enabled')) {
             return $this->readJson();
         }
 
@@ -197,7 +197,7 @@ class FileActivator implements ActivatorInterface
      */
     private function config(string $key, $default = null)
     {
-        return $this->config->get('modules.activators.file.' . $key, $default);
+        return $this->config->get('cmss.activators.file.' . $key, $default);
     }
 
     /**

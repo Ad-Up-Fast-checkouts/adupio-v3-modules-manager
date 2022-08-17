@@ -12,7 +12,7 @@ class CMSDeleteCommand extends Command
 
     public function handle(): int
     {
-        $this->laravel['modules']->delete($this->argument('cms'));
+        $this->laravel['cmss']->delete($this->argument('cms'));
 
         $this->info("CMS {$this->argument('cms')} has been deleted.");
 
