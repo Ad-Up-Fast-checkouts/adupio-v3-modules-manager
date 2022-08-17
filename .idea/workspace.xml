@@ -2,10 +2,101 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e4db13b-0e8f-4721-afcc-b921d4ff2038" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.php" afterPath="$PROJECT_DIR$/config/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Activators/FileActivator.php" afterPath="$PROJECT_DIR$/src/Activators/FileActivator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Collection.php" afterPath="$PROJECT_DIR$/src/Collection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/CommandMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/CommandMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ComponentClassMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ComponentClassMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ComponentViewMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ComponentViewMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ControllerMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ControllerMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/DisableCommand.php" afterPath="$PROJECT_DIR$/src/Commands/DisableCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/DumpCommand.php" afterPath="$PROJECT_DIR$/src/Commands/DumpCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/EnableCommand.php" afterPath="$PROJECT_DIR$/src/Commands/EnableCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/EventMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/EventMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/FactoryMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/FactoryMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/GeneratorCommand.php" afterPath="$PROJECT_DIR$/src/Commands/GeneratorCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/InstallCommand.php" afterPath="$PROJECT_DIR$/src/Commands/InstallCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/JobMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/JobMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/LaravelModulesV6Migrator.php" afterPath="$PROJECT_DIR$/src/Commands/LaravelModulesV6Migrator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ListCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ListCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ListenerMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ListenerMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MailMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MailMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MiddlewareMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MiddlewareMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MigrateCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MigrateCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MigrateFreshCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MigrateFreshCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MigrateRefreshCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MigrateRefreshCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MigrateResetCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MigrateResetCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MigrateRollbackCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MigrateRollbackCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MigrateStatusCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MigrateStatusCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/MigrationMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/MigrationMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ModelMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ModelMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ModelShowCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ModelShowCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ModuleDeleteCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ModuleDeleteCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ModuleMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ModuleMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/NotificationMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/NotificationMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/PolicyMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/PolicyMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ProviderMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ProviderMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/PublishCommand.php" afterPath="$PROJECT_DIR$/src/Commands/PublishCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/PublishConfigurationCommand.php" afterPath="$PROJECT_DIR$/src/Commands/PublishConfigurationCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/PublishMigrationCommand.php" afterPath="$PROJECT_DIR$/src/Commands/PublishMigrationCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/PublishTranslationCommand.php" afterPath="$PROJECT_DIR$/src/Commands/PublishTranslationCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/RequestMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/RequestMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/ResourceMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/ResourceMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/RouteProviderMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/RouteProviderMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/RuleMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/RuleMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/SeedCommand.php" afterPath="$PROJECT_DIR$/src/Commands/SeedCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/SeedMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/SeedMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/SetupCommand.php" afterPath="$PROJECT_DIR$/src/Commands/SetupCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/TestMakeCommand.php" afterPath="$PROJECT_DIR$/src/Commands/TestMakeCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/UnUseCommand.php" afterPath="$PROJECT_DIR$/src/Commands/UnUseCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/UpdateCommand.php" afterPath="$PROJECT_DIR$/src/Commands/UpdateCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Commands/UseCommand.php" afterPath="$PROJECT_DIR$/src/Commands/UseCommand.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Contracts/ActivatorInterface.php" afterPath="$PROJECT_DIR$/src/Contracts/ActivatorInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Contracts/PublisherInterface.php" afterPath="$PROJECT_DIR$/src/Contracts/PublisherInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Contracts/RepositoryInterface.php" afterPath="$PROJECT_DIR$/src/Contracts/RepositoryInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Contracts/RunableInterface.php" afterPath="$PROJECT_DIR$/src/Contracts/RunableInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Exceptions/FileAlreadyExistException.php" afterPath="$PROJECT_DIR$/src/Exceptions/FileAlreadyExistException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Exceptions/InvalidActivatorClass.php" afterPath="$PROJECT_DIR$/src/Exceptions/InvalidActivatorClass.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Exceptions/InvalidAssetPath.php" afterPath="$PROJECT_DIR$/src/Exceptions/InvalidAssetPath.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Exceptions/InvalidJsonException.php" afterPath="$PROJECT_DIR$/src/Exceptions/InvalidJsonException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Exceptions/ModuleNotFoundException.php" afterPath="$PROJECT_DIR$/src/Exceptions/ModuleNotFoundException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Facades/Module.php" afterPath="$PROJECT_DIR$/src/Facades/Module.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileRepository.php" afterPath="$PROJECT_DIR$/src/FileRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Generators/FileGenerator.php" afterPath="$PROJECT_DIR$/src/Generators/FileGenerator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Generators/Generator.php" afterPath="$PROJECT_DIR$/src/Generators/Generator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Generators/ModuleGenerator.php" afterPath="$PROJECT_DIR$/src/Generators/ModuleGenerator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Json.php" afterPath="$PROJECT_DIR$/src/Json.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Laravel/LaravelFileRepository.php" afterPath="$PROJECT_DIR$/src/Laravel/LaravelFileRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Laravel/Module.php" afterPath="$PROJECT_DIR$/src/Laravel/Module.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LaravelModulesServiceProvider.php" afterPath="$PROJECT_DIR$/src/LaravelModulesServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Lumen/LumenFileRepository.php" afterPath="$PROJECT_DIR$/src/Lumen/LumenFileRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Lumen/Module.php" afterPath="$PROJECT_DIR$/src/Lumen/Module.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LumenModulesServiceProvider.php" afterPath="$PROJECT_DIR$/src/LumenModulesServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Migrations/Migrator.php" afterPath="$PROJECT_DIR$/src/Migrations/Migrator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Module.php" afterPath="$PROJECT_DIR$/src/Module.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModulesServiceProvider.php" afterPath="$PROJECT_DIR$/src/ModulesServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Process/Installer.php" afterPath="$PROJECT_DIR$/src/Process/Installer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Process/Runner.php" afterPath="$PROJECT_DIR$/src/Process/Runner.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Process/Updater.php" afterPath="$PROJECT_DIR$/src/Process/Updater.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Providers/BootstrapServiceProvider.php" afterPath="$PROJECT_DIR$/src/Providers/BootstrapServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Providers/ConsoleServiceProvider.php" afterPath="$PROJECT_DIR$/src/Providers/ConsoleServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Providers/ContractsServiceProvider.php" afterPath="$PROJECT_DIR$/src/Providers/ContractsServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Publishing/AssetPublisher.php" afterPath="$PROJECT_DIR$/src/Publishing/AssetPublisher.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Publishing/LangPublisher.php" afterPath="$PROJECT_DIR$/src/Publishing/LangPublisher.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Publishing/MigrationPublisher.php" afterPath="$PROJECT_DIR$/src/Publishing/MigrationPublisher.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Publishing/Publisher.php" afterPath="$PROJECT_DIR$/src/Publishing/Publisher.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Routing/Controller.php" afterPath="$PROJECT_DIR$/src/Routing/Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Support/Config/GenerateConfigReader.php" afterPath="$PROJECT_DIR$/src/Support/Config/GenerateConfigReader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Support/Config/GeneratorPath.php" afterPath="$PROJECT_DIR$/src/Support/Config/GeneratorPath.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Support/Migrations/NameParser.php" afterPath="$PROJECT_DIR$/src/Support/Migrations/NameParser.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Support/Migrations/SchemaParser.php" afterPath="$PROJECT_DIR$/src/Support/Migrations/SchemaParser.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Support/Stub.php" afterPath="$PROJECT_DIR$/src/Support/Stub.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Traits/CanClearModulesCache.php" afterPath="$PROJECT_DIR$/src/Traits/CanClearModulesCache.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Traits/MigrationLoaderTrait.php" afterPath="$PROJECT_DIR$/src/Traits/MigrationLoaderTrait.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Traits/ModuleCommandTrait.php" afterPath="$PROJECT_DIR$/src/Traits/ModuleCommandTrait.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,16 +107,15 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="272">
-                <caret line="249" column="37" lean-forward="false" selection-start-line="249" selection-start-column="37" selection-end-line="249" selection-end-column="37" />
-                <folding />
-              </first_editor>
-              <second_editor />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Module.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Module.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#60#94#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -34,13 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>modul</find>
-      <find>c</find>
-      <find>config</find>
-      <find>config(</find>
-      <find>config('</find>
-      <find>config('mo</find>
-      <find>config('mod</find>
       <find>config('modu</find>
       <find>config('modules</find>
       <find>config('module</find>
@@ -55,7 +138,28 @@
       <find>nwida</find>
       <find>nwidar</find>
       <find>nwidart</find>
+      <find>Nwidart\</find>
+      <find>Nwidart\M</find>
+      <find>Nwidart\Modu</find>
+      <find>Nwidart\Module</find>
+      <find>Nwidart\Modules</find>
+      <find>Nnwi</find>
+      <find>Nnw</find>
+      <find>Nn</find>
+      <find>N</find>
+      <find>Nwid</find>
+      <find>Nwida</find>
+      <find>Nwidar</find>
+      <find>Nwidart</find>
+      <find>M</find>
+      <find>Modul</find>
+      <find>Module</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>AdUpFastcheckouts</replace>
+      <replace>AdUpFastcheckouts\adupiov3modulesmanager</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,6 +168,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/CHANGELOG.md" />
       </list>
     </option>
   </component>
@@ -95,36 +200,252 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cmsmodule" />
+              <option name="myItemId" value="adupio-v3-modules-manager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cmsmodule" />
+              <option name="myItemId" value="adupio-v3-modules-manager" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cmsmodule" />
+              <option name="myItemId" value="adupio-v3-modules-manager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cmsmodule" />
+              <option name="myItemId" value="adupio-v3-modules-manager" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Traits" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Support" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Routing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Publishing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Providers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Process" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Migrations" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lumen" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Generators" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Facades" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adupio-v3-modules-manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Activators" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -158,28 +479,30 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2237000" />
+    <option name="totallyTimeSpent" value="4851000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2540453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -194,6 +517,17 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -210,6 +544,43 @@
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="176">
+            <caret line="163" column="60" lean-forward="false" selection-start-line="163" selection-start-column="60" selection-end-line="163" selection-end-column="60" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="52" column="77" lean-forward="false" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Facades/Module.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Module.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#60#94#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

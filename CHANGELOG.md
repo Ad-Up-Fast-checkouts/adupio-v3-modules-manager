@@ -13,7 +13,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 ### Added 
 
-- Added option to publish stubs for modules `php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider" --tag="stubs"`
+- Added option to publish stubs for modules `php artisan vendor:publish --provider="AdUpFastcheckouts\adupiov3modulesmanager\LaravelModulesServiceProvider" --tag="stubs"`
 
 ### Changed
 
@@ -64,7 +64,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 ### Fixed
 
-- Fixed bug: `Target class [Nwidart\Modules\Commands\] does not exist.`
+- Fixed bug: `Target class [AdUpFastcheckouts\adupiov3modulesmanager\Commands\] does not exist.`
 
 ## 8.1 - 2020-11-10
 
@@ -161,11 +161,11 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
     Modules don't store their active status in their module.json file anymore, but in a file under the storage folder.
     Run `php artisan module:v6:migrate` to use the new system.
-- **BREAKING** Renamed method `enabled` to `isEnabled` in `\Nwidart\Modules\Module`.
-- **BREAKING** Renamed method `disabled` to `isDisabled` in `\Nwidart\Modules\Module`.
-- **BREAKING** Renamed method `enabled` to `isEnabled` in `\Nwidart\Modules\FileRepository`.
-- **BREAKING** Renamed method `disabled` to `isDisabled` in `\Nwidart\Modules\FileRepository`.
-- **BREAKING** Removed the `__get` magic method on the `\Nwidart\Modules\Module` class. Use `get()` or `json()->get()` instead.
+- **BREAKING** Renamed method `enabled` to `isEnabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\Module`.
+- **BREAKING** Renamed method `disabled` to `isDisabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\Module`.
+- **BREAKING** Renamed method `enabled` to `isEnabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\FileRepository`.
+- **BREAKING** Renamed method `disabled` to `isDisabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\FileRepository`.
+- **BREAKING** Removed the `__get` magic method on the `\AdUpFastcheckouts\adupiov3modulesmanager\Module` class. Use `get()` or `json()->get()` instead.
 - The `module:make-listener` command now correctly uses the namespace configuration
 - The generated Factories now has type hints for the `\Illuminate\Database\Eloquent\Factory` class
 - Improved foreign key constraint generation
