@@ -12,7 +12,7 @@ class RouteProviderMakeCommand extends GeneratorCommand
 {
     use CMSCommandTrait;
 
-    protected $argumentName = 'module';
+    protected $argumentName = 'cms';
 
     /**
      * The command name.
@@ -36,7 +36,7 @@ class RouteProviderMakeCommand extends GeneratorCommand
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -54,17 +54,17 @@ class RouteProviderMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/route-provider.stub', [
-            'NAMESPACE'            => $this->getClassNamespace($module),
+            'NAMESPACE'            => $this->getClassNamespace($cms),
             'CLASS'                => $this->getFileName(),
             'MODULE_NAMESPACE'     => $this->laravel['modules']->config('namespace'),
             'MODULE'               => $this->getCMSName(),
             'CONTROLLER_NAMESPACE' => $this->getControllerNameSpace(),
             'WEB_ROUTES_PATH'      => $this->getWebRoutesPath(),
             'API_ROUTES_PATH'      => $this->getApiRoutesPath(),
-            'LOWER_NAME'           => $module->getLowerName(),
+            'LOWER_NAME'           => $cms->getLowerName(),
         ]))->render();
     }
 
@@ -108,9 +108,9 @@ class RouteProviderMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.provider.namespace') ?: $module->config('paths.generator.provider.path', 'Providers');
+        return $cms->config('paths.generator.provider.namespace') ?: $cms->config('paths.generator.provider.path', 'Providers');
     }
 
     /**
@@ -118,8 +118,8 @@ class RouteProviderMakeCommand extends GeneratorCommand
      */
     private function getControllerNameSpace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return str_replace('/', '\\', $module->config('paths.generator.controller.namespace') ?: $module->config('paths.generator.controller.path', 'Controller'));
+        return str_replace('/', '\\', $cms->config('paths.generator.controller.namespace') ?: $cms->config('paths.generator.controller.path', 'Controller'));
     }
 }

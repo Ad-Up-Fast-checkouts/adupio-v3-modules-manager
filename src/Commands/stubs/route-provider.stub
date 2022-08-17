@@ -12,7 +12,7 @@ class $CLASS$ extends ServiceProvider
      *
      * @var string
      */
-    protected $moduleNamespace = '$MODULE_NAMESPACE$\$MODULE$\$CONTROLLER_NAMESPACE$';
+    protected $cmsNamespace = '$MODULE_NAMESPACE$\$MODULE$\$CONTROLLER_NAMESPACE$';
 
     /**
      * Called before routes are registered.
@@ -48,7 +48,7 @@ class $CLASS$ extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->moduleNamespace)
+            ->namespace($this->cmsNamespace)
             ->group(module_path('$MODULE$', '$WEB_ROUTES_PATH$'));
     }
 
@@ -63,7 +63,7 @@ class $CLASS$ extends ServiceProvider
     {
         Route::prefix('api')
             ->middleware('api')
-            ->namespace($this->moduleNamespace)
+            ->namespace($this->cmsNamespace)
             ->group(module_path('$MODULE$', '$API_ROUTES_PATH$'));
     }
 }

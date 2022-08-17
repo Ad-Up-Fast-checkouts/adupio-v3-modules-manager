@@ -53,18 +53,18 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
-            'MODULENAME'        => $module->getStudlyName(),
+            'MODULENAME'        => $cms->getStudlyName(),
             'CONTROLLERNAME'    => $this->getControllerName(),
-            'NAMESPACE'         => $module->getStudlyName(),
-            'CLASS_NAMESPACE'   => $this->getClassNamespace($module),
+            'NAMESPACE'         => $cms->getStudlyName(),
+            'CLASS_NAMESPACE'   => $this->getClassNamespace($cms),
             'CLASS'             => $this->getControllerNameWithoutNamespace(),
-            'LOWER_NAME'        => $module->getLowerName(),
+            'LOWER_NAME'        => $cms->getLowerName(),
             'MODULE'            => $this->getCMSName(),
             'NAME'              => $this->getCMSName(),
-            'STUDLY_NAME'       => $module->getStudlyName(),
+            'STUDLY_NAME'       => $cms->getStudlyName(),
             'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
         ]))->render();
     }
@@ -78,7 +78,7 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         return [
             ['controller', InputArgument::REQUIRED, 'The name of the controller class.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -117,9 +117,9 @@ class ControllerMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.controller.namespace') ?: $module->config('paths.generator.controller.path', 'Http/Controllers');
+        return $cms->config('paths.generator.controller.namespace') ?: $cms->config('paths.generator.controller.path', 'Http/Controllers');
     }
 
     /**

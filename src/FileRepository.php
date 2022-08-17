@@ -142,7 +142,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
     {
         $paths = $this->getScanPaths();
 
-        $modules = [];
+        $cmss = [];
 
         foreach ($paths as $key => $path) {
             $manifests = $this->getFiles()->glob("{$path}/module.json");
@@ -152,11 +152,11 @@ abstract class FileRepository implements RepositoryInterface, Countable
             foreach ($manifests as $manifest) {
                 $name = Json::make($manifest)->get('name');
 
-                $modules[$name] = $this->createCMS($this->app, $name, dirname($manifest));
+                $cmss[$name] = $this->createCMS($this->app, $name, dirname($manifest));
             }
         }
 
-        return $modules;
+        return $cmss;
     }
 
     /**
@@ -182,15 +182,15 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     protected function formatCached($cached)
     {
-        $modules = [];
+        $cmss = [];
 
-        foreach ($cached as $name => $module) {
-            $path = $module['path'];
+        foreach ($cached as $name => $cms) {
+            $path = $cms['path'];
 
-            $modules[$name] = $this->createCMS($this->app, $name, $path);
+            $cmss[$name] = $this->createCMS($this->app, $name, $path);
         }
 
-        return $modules;
+        return $cmss;
     }
 
     /**
@@ -224,16 +224,16 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function getByStatus($status): array
     {
-        $modules = [];
+        $cmss = [];
 
-        /** @var CMS $module */
-        foreach ($this->all() as $name => $module) {
-            if ($module->isStatus($status)) {
-                $modules[$name] = $module;
+        /** @var CMS $cms */
+        foreach ($this->all() as $name => $cms) {
+            if ($cms->isStatus($status)) {
+                $cmss[$name] = $cms;
             }
         }
 
-        return $modules;
+        return $cmss;
     }
 
     /**
@@ -287,9 +287,9 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function getOrdered($direction = 'asc'): array
     {
-        $modules = $this->allEnabled();
+        $cmss = $this->allEnabled();
 
-        uasort($modules, function (CMS $a, CMS $b) use ($direction) {
+        uasort($cmss, function (CMS $a, CMS $b) use ($direction) {
             if ($a->get('priority') === $b->get('priority')) {
                 return 0;
             }
@@ -301,7 +301,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
             return $a->get('priority') > $b->get('priority') ? 1 : -1;
         });
 
-        return $modules;
+        return $cmss;
     }
 
     /**
@@ -317,8 +317,8 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function register(): void
     {
-        foreach ($this->getOrdered() as $module) {
-            $module->register();
+        foreach ($this->getOrdered() as $cms) {
+            $cms->register();
         }
     }
 
@@ -327,8 +327,8 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function boot(): void
     {
-        foreach ($this->getOrdered() as $module) {
-            $module->boot();
+        foreach ($this->getOrdered() as $cms) {
+            $cms->boot();
         }
     }
 
@@ -337,9 +337,9 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function find(string $name)
     {
-        foreach ($this->all() as $module) {
-            if ($module->getLowerName() === strtolower($name)) {
-                return $module;
+        foreach ($this->all() as $cms) {
+            if ($cms->getLowerName() === strtolower($name)) {
+                return $cms;
             }
         }
 
@@ -351,9 +351,9 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function findByAlias(string $alias)
     {
-        foreach ($this->all() as $module) {
-            if ($module->getAlias() === $alias) {
-                return $module;
+        foreach ($this->all() as $cms) {
+            if ($cms->getAlias() === $alias) {
+                return $cms;
             }
         }
 
@@ -367,9 +367,9 @@ abstract class FileRepository implements RepositoryInterface, Countable
     {
         $requirements = [];
 
-        $module = $this->findOrFail($name);
+        $cms = $this->findOrFail($name);
 
-        foreach ($module->getRequires() as $requirementName) {
+        foreach ($cms->getRequires() as $requirementName) {
             $requirements[] = $this->findByAlias($requirementName);
         }
 
@@ -387,10 +387,10 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function findOrFail(string $name)
     {
-        $module = $this->find($name);
+        $cms = $this->find($name);
 
-        if ($module !== null) {
-            return $module;
+        if ($cms !== null) {
+            return $cms;
         }
 
         throw new CMSNotFoundException("CMS [{$name}] does not exist!");
@@ -411,25 +411,25 @@ abstract class FileRepository implements RepositoryInterface, Countable
     /**
      * Get module path for a specific module.
      *
-     * @param $module
+     * @param $cms
      *
      * @return string
      */
-    public function getCMSPath($module)
+    public function getCMSPath($cms)
     {
         try {
-            return $this->findOrFail($module)->getPath() . '/';
+            return $this->findOrFail($cms)->getPath() . '/';
         } catch (CMSNotFoundException $e) {
-            return $this->getPath() . '/' . Str::studly($module) . '/';
+            return $this->getPath() . '/' . Str::studly($cms) . '/';
         }
     }
 
     /**
      * @inheritDoc
      */
-    public function assetPath(string $module): string
+    public function assetPath(string $cms): string
     {
-        return $this->config('paths.assets') . '/' . $module;
+        return $this->config('paths.assets') . '/' . $cms;
     }
 
     /**
@@ -469,9 +469,9 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function setUsed($name)
     {
-        $module = $this->findOrFail($name);
+        $cms = $this->findOrFail($name);
 
-        $this->getFiles()->put($this->getUsedStoragePath(), $module);
+        $this->getFiles()->put($this->getUsedStoragePath(), $cms);
     }
 
     /**
@@ -583,11 +583,11 @@ abstract class FileRepository implements RepositoryInterface, Countable
     /**
      * Update dependencies for the specified module.
      *
-     * @param string $module
+     * @param string $cms
      */
-    public function update($module)
+    public function update($cms)
     {
-        with(new Updater($this))->update($module);
+        with(new Updater($this))->update($cms);
     }
 
     /**

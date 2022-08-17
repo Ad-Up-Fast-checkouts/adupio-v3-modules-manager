@@ -28,16 +28,16 @@ class PublishMigrationCommand extends Command
      */
     public function handle(): int
     {
-        if ($name = $this->argument('module')) {
-            $module = $this->laravel['modules']->findOrFail($name);
+        if ($name = $this->argument('cms')) {
+            $cms = $this->laravel['modules']->findOrFail($name);
 
-            $this->publish($module);
+            $this->publish($cms);
 
             return 0;
         }
 
-        foreach ($this->laravel['modules']->allEnabled() as $module) {
-            $this->publish($module);
+        foreach ($this->laravel['modules']->allEnabled() as $cms) {
+            $this->publish($cms);
         }
 
         return 0;
@@ -46,11 +46,11 @@ class PublishMigrationCommand extends Command
     /**
      * Publish migration for the specified module.
      *
-     * @param \AdUpFastcheckouts\adupiov3modulesmanager\CMS $module
+     * @param \AdUpFastcheckouts\adupiov3modulesmanager\CMS $cms
      */
-    public function publish($module)
+    public function publish($cms)
     {
-        with(new MigrationPublisher(new Migrator($module, $this->getLaravel())))
+        with(new MigrationPublisher(new Migrator($cms, $this->getLaravel())))
             ->setRepository($this->laravel['modules'])
             ->setConsole($this)
             ->publish();
@@ -64,7 +64,7 @@ class PublishMigrationCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module being used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module being used.'],
         ];
     }
 }

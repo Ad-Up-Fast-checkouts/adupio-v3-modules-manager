@@ -27,7 +27,7 @@ class MigrateCommand extends Command
     /**
      * @var \AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface
      */
-    protected $module;
+    protected $cms;
 
     /**
      * Execute the console command.
@@ -36,22 +36,22 @@ class MigrateCommand extends Command
      */
     public function handle(): int
     {
-        $this->module = $this->laravel['modules'];
+        $this->cms = $this->laravel['modules'];
 
-        $name = $this->argument('module');
+        $name = $this->argument('cms');
 
         if ($name) {
-            $module = $this->module->findOrFail($name);
+            $cms = $this->cms->findOrFail($name);
 
-            $this->migrate($module);
+            $this->migrate($cms);
 
             return 0;
         }
 
-        foreach ($this->module->getOrdered($this->option('direction')) as $module) {
-            $this->line('Running for module: <info>' . $module->getName() . '</info>');
+        foreach ($this->cms->getOrdered($this->option('direction')) as $cms) {
+            $this->line('Running for module: <info>' . $cms->getName() . '</info>');
 
-            $this->migrate($module);
+            $this->migrate($cms);
         }
 
         return 0;
@@ -60,11 +60,11 @@ class MigrateCommand extends Command
     /**
      * Run the migration from the specified module.
      *
-     * @param CMS $module
+     * @param CMS $cms
      */
-    protected function migrate(CMS $module)
+    protected function migrate(CMS $cms)
     {
-        $path = str_replace(base_path(), '', (new Migrator($module, $this->getLaravel()))->getPath());
+        $path = str_replace(base_path(), '', (new Migrator($cms, $this->getLaravel()))->getPath());
 
         if ($this->option('subpath')) {
             $path = $path . "/" . $this->option("subpath");
@@ -78,7 +78,7 @@ class MigrateCommand extends Command
         ]);
 
         if ($this->option('seed')) {
-            $this->call('module:seed', ['module' => $module->getName(), '--force' => $this->option('force')]);
+            $this->call('module:seed', ['cms' => $cms->getName(), '--force' => $this->option('force')]);
         }
     }
 
@@ -90,7 +90,7 @@ class MigrateCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 

@@ -30,29 +30,29 @@ class MigrateRefreshCommand extends Command
      */
     public function handle(): int
     {
-        $module = $this->argument('module');
+        $cms = $this->argument('cms');
 
-        if ($module && !$this->getCMSName()) {
-            $this->error("CMS [$module] does not exists.");
+        if ($cms && !$this->getCMSName()) {
+            $this->error("CMS [$cms] does not exists.");
 
             return E_ERROR;
         }
 
         $this->call('module:migrate-reset', [
-            'module' => $this->getCMSName(),
+            'cms' => $this->getCMSName(),
             '--database' => $this->option('database'),
             '--force' => $this->option('force'),
         ]);
 
         $this->call('module:migrate', [
-            'module' => $this->getCMSName(),
+            'cms' => $this->getCMSName(),
             '--database' => $this->option('database'),
             '--force' => $this->option('force'),
         ]);
 
         if ($this->option('seed')) {
             $this->call('module:seed', [
-                'module' => $this->getCMSName(),
+                'cms' => $this->getCMSName(),
             ]);
         }
 
@@ -67,7 +67,7 @@ class MigrateRefreshCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -87,14 +87,14 @@ class MigrateRefreshCommand extends Command
 
     public function getCMSName()
     {
-        $module = $this->argument('module');
+        $cms = $this->argument('cms');
 
-        if (!$module) {
+        if (!$cms) {
             return null;
         }
 
-        $module = app('modules')->find($module);
+        $cms = app('modules')->find($cms);
 
-        return $module ? $module->getStudlyName() : null;
+        return $cms ? $cms->getStudlyName() : null;
     }
 }

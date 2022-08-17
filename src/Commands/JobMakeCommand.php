@@ -31,9 +31,9 @@ class JobMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.jobs.namespace') ?: $module->config('paths.generator.jobs.path', 'Jobs');
+        return $cms->config('paths.generator.jobs.namespace') ?: $cms->config('paths.generator.jobs.path', 'Jobs');
     }
 
     /**
@@ -45,7 +45,7 @@ class JobMakeCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the job.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -68,10 +68,10 @@ class JobMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
-            'NAMESPACE' => $this->getClassNamespace($module),
+            'NAMESPACE' => $this->getClassNamespace($cms),
             'CLASS'     => $this->getClass(),
         ]))->render();
     }

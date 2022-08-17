@@ -105,7 +105,7 @@ interface RepositoryInterface
      */
     public function findOrFail(string $name);
 
-    public function getCMSPath($moduleName);
+    public function getCMSPath($cmsName);
 
     /**
      * @return \Illuminate\Filesystem\Filesystem
@@ -148,18 +148,18 @@ interface RepositoryInterface
     /**
      * Get asset path for a specific module.
      *
-     * @param string $module
+     * @param string $cms
      * @return string
      */
-    public function assetPath(string $module): string;
+    public function assetPath(string $cms): string;
 
     /**
      * Delete a specific module.
-     * @param string $module
+     * @param string $cms
      * @return bool
      * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\CMSNotFoundException
      */
-    public function delete(string $module): bool;
+    public function delete(string $cms): bool;
 
     /**
      * Determine whether the given module is activated.

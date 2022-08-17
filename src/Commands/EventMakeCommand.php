@@ -30,10 +30,10 @@ class EventMakeCommand extends GeneratorCommand
 
     public function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/event.stub', [
-            'NAMESPACE' => $this->getClassNamespace($module),
+            'NAMESPACE' => $this->getClassNamespace($cms),
             'CLASS' => $this->getClass(),
         ]))->render();
     }
@@ -57,9 +57,9 @@ class EventMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.event.namespace') ?: $module->config('paths.generator.event.path', 'Events');
+        return $cms->config('paths.generator.event.namespace') ?: $cms->config('paths.generator.event.path', 'Events');
     }
 
     /**
@@ -71,7 +71,7 @@ class EventMakeCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the event.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 }

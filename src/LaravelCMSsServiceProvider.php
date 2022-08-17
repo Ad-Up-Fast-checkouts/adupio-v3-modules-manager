@@ -38,10 +38,10 @@ class LaravelCMSsServiceProvider extends CMSsServiceProvider
         Stub::setBasePath($path);
 
         $this->app->booted(function ($app) {
-            /** @var RepositoryInterface $moduleRepository */
-            $moduleRepository = $app[RepositoryInterface::class];
-            if ($moduleRepository->config('stubs.enabled') === true) {
-                Stub::setBasePath($moduleRepository->config('stubs.path'));
+            /** @var RepositoryInterface $cmsRepository */
+            $cmsRepository = $app[RepositoryInterface::class];
+            if ($cmsRepository->config('stubs.enabled') === true) {
+                Stub::setBasePath($cmsRepository->config('stubs.path'));
             }
         });
     }

@@ -37,9 +37,9 @@ class ProviderMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.provider.namespace') ?: $module->config('paths.generator.provider.path', 'Providers');
+        return $cms->config('paths.generator.provider.namespace') ?: $cms->config('paths.generator.provider.path', 'Providers');
     }
 
     /**
@@ -51,7 +51,7 @@ class ProviderMakeCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The service provider name.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -74,16 +74,16 @@ class ProviderMakeCommand extends GeneratorCommand
     {
         $stub = $this->option('master') ? 'scaffold/provider' : 'provider';
 
-        /** @var CMS $module */
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        /** @var CMS $cms */
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/' . $stub . '.stub', [
-            'NAMESPACE'         => $this->getClassNamespace($module),
+            'NAMESPACE'         => $this->getClassNamespace($cms),
             'CLASS'             => $this->getClass(),
-            'LOWER_NAME'        => $module->getLowerName(),
+            'LOWER_NAME'        => $cms->getLowerName(),
             'MODULE'            => $this->getCMSName(),
             'NAME'              => $this->getFileName(),
-            'STUDLY_NAME'       => $module->getStudlyName(),
+            'STUDLY_NAME'       => $cms->getStudlyName(),
             'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
             'PATH_VIEWS'        => GenerateConfigReader::read('views')->getPath(),
             'PATH_LANG'         => GenerateConfigReader::read('lang')->getPath(),

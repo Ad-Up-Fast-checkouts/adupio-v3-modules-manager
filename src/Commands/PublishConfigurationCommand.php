@@ -28,38 +28,38 @@ class PublishConfigurationCommand extends Command
      */
     public function handle(): int
     {
-        if ($module = $this->argument('module')) {
-            $this->publishConfiguration($module);
+        if ($cms = $this->argument('cms')) {
+            $this->publishConfiguration($cms);
 
             return 0;
         }
 
-        foreach ($this->laravel['modules']->allEnabled() as $module) {
-            $this->publishConfiguration($module->getName());
+        foreach ($this->laravel['modules']->allEnabled() as $cms) {
+            $this->publishConfiguration($cms->getName());
         }
 
         return 0;
     }
 
     /**
-     * @param string $module
+     * @param string $cms
      * @return string
      */
-    private function getServiceProviderForCMS($module)
+    private function getServiceProviderForCMS($cms)
     {
         $namespace = $this->laravel['config']->get('modules.namespace');
-        $studlyName = Str::studly($module);
+        $studlyName = Str::studly($cms);
 
         return "$namespace\\$studlyName\\Providers\\{$studlyName}ServiceProvider";
     }
 
     /**
-     * @param string $module
+     * @param string $cms
      */
-    private function publishConfiguration($module)
+    private function publishConfiguration($cms)
     {
         $this->call('vendor:publish', [
-            '--provider' => $this->getServiceProviderForCMS($module),
+            '--provider' => $this->getServiceProviderForCMS($cms),
             '--force' => $this->option('force'),
             '--tag' => ['config'],
         ]);
@@ -73,7 +73,7 @@ class PublishConfigurationCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module being used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module being used.'],
         ];
     }
 

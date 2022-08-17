@@ -29,16 +29,16 @@ class MigrateRollbackCommand extends Command
     /**
      * @var \AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface
      */
-    protected $module;
+    protected $cms;
 
     /**
      * Execute the console command.
      */
     public function handle(): int
     {
-        $this->module = $this->laravel['modules'];
+        $this->cms = $this->laravel['modules'];
 
-        $name = $this->argument('module');
+        $name = $this->argument('cms');
 
         if (!empty($name)) {
             $this->rollback($name);
@@ -46,10 +46,10 @@ class MigrateRollbackCommand extends Command
             return 0;
         }
 
-        foreach ($this->module->getOrdered($this->option('direction')) as $module) {
-            $this->line('Running for module: <info>' . $module->getName() . '</info>');
+        foreach ($this->cms->getOrdered($this->option('direction')) as $cms) {
+            $this->line('Running for module: <info>' . $cms->getName() . '</info>');
 
-            $this->rollback($module);
+            $this->rollback($cms);
         }
 
         return 0;
@@ -58,15 +58,15 @@ class MigrateRollbackCommand extends Command
     /**
      * Rollback migration from the specified module.
      *
-     * @param $module
+     * @param $cms
      */
-    public function rollback($module)
+    public function rollback($cms)
     {
-        if (is_string($module)) {
-            $module = $this->module->findOrFail($module);
+        if (is_string($cms)) {
+            $cms = $this->cms->findOrFail($cms);
         }
 
-        $migrator = new Migrator($module, $this->getLaravel());
+        $migrator = new Migrator($cms, $this->getLaravel());
 
         $database = $this->option('database');
 
@@ -95,7 +95,7 @@ class MigrateRollbackCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 

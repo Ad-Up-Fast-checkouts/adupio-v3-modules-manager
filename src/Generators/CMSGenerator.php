@@ -53,7 +53,7 @@ class CMSGenerator extends Generator
      *
      * @var \AdUpFastcheckouts\adupiov3modulesmanager\CMS
      */
-    protected $module;
+    protected $cms;
 
     /**
      * Force status.
@@ -79,14 +79,14 @@ class CMSGenerator extends Generator
     /**
      * The constructor.
      * @param $name
-     * @param FileRepository $module
+     * @param FileRepository $cms
      * @param Config     $config
      * @param Filesystem $filesystem
      * @param Console    $console
      */
     public function __construct(
         $name,
-        FileRepository $module = null,
+        FileRepository $cms = null,
         Config $config = null,
         Filesystem $filesystem = null,
         Console $console = null,
@@ -96,7 +96,7 @@ class CMSGenerator extends Generator
         $this->config = $config;
         $this->filesystem = $filesystem;
         $this->console = $console;
-        $this->module = $module;
+        $this->cms = $cms;
         $this->activator = $activator;
     }
 
@@ -231,19 +231,19 @@ class CMSGenerator extends Generator
      */
     public function getCMS()
     {
-        return $this->module;
+        return $this->cms;
     }
 
     /**
      * Set the module instance.
      *
-     * @param mixed $module
+     * @param mixed $cms
      *
      * @return $this
      */
-    public function setCMS($module)
+    public function setCMS($cms)
     {
-        $this->module = $module;
+        $this->cms = $cms;
 
         return $this;
     }
@@ -255,7 +255,7 @@ class CMSGenerator extends Generator
      */
     public function getFolders()
     {
-        return $this->module->config('paths.generator');
+        return $this->cms->config('paths.generator');
     }
 
     /**
@@ -265,7 +265,7 @@ class CMSGenerator extends Generator
      */
     public function getFiles()
     {
-        return $this->module->config('stubs.files');
+        return $this->cms->config('stubs.files');
     }
 
     /**
@@ -289,9 +289,9 @@ class CMSGenerator extends Generator
     {
         $name = $this->getName();
 
-        if ($this->module->has($name)) {
+        if ($this->cms->has($name)) {
             if ($this->force) {
-                $this->module->delete($name);
+                $this->cms->delete($name);
             } else {
                 $this->console->error("CMS [{$name}] already exist!");
 
@@ -331,7 +331,7 @@ class CMSGenerator extends Generator
                 continue;
             }
 
-            $path = $this->module->getCMSPath($this->getName()) . '/' . $folder->getPath();
+            $path = $this->cms->getCMSPath($this->getName()) . '/' . $folder->getPath();
 
             $this->filesystem->makeDirectory($path, 0755, true);
             if (config('modules.stubs.gitkeep')) {
@@ -356,7 +356,7 @@ class CMSGenerator extends Generator
     public function generateFiles()
     {
         foreach ($this->getFiles() as $stub => $file) {
-            $path = $this->module->getCMSPath($this->getName()) . $file;
+            $path = $this->cms->getCMSPath($this->getName()) . $file;
 
             if (!$this->filesystem->isDirectory($dir = dirname($path))) {
                 $this->filesystem->makeDirectory($dir, 0775, true);
@@ -376,7 +376,7 @@ class CMSGenerator extends Generator
         if (GenerateConfigReader::read('seeder')->generate() === true) {
             $this->console->call('module:make-seed', [
                 'name' => $this->getName(),
-                'module' => $this->getName(),
+                'cms' => $this->getName(),
                 '--master' => true,
             ]);
         }
@@ -384,11 +384,11 @@ class CMSGenerator extends Generator
         if (GenerateConfigReader::read('provider')->generate() === true) {
             $this->console->call('module:make-provider', [
                 'name' => $this->getName() . 'ServiceProvider',
-                'module' => $this->getName(),
+                'cms' => $this->getName(),
                 '--master' => true,
             ]);
             $this->console->call('module:route-provider', [
-                'module' => $this->getName(),
+                'cms' => $this->getName(),
             ]);
         }
 
@@ -396,7 +396,7 @@ class CMSGenerator extends Generator
             $options = $this->type=='api' ? ['--api'=>true] : [];
             $this->console->call('module:make-controller', [
                 'controller' => $this->getName() . 'Controller',
-                'module' => $this->getName(),
+                'cms' => $this->getName(),
             ]+$options);
         }
     }
@@ -422,7 +422,7 @@ class CMSGenerator extends Generator
      */
     public function getReplacements()
     {
-        return $this->module->config('stubs.replacements');
+        return $this->cms->config('stubs.replacements');
     }
 
     /**
@@ -434,7 +434,7 @@ class CMSGenerator extends Generator
      */
     protected function getReplacement($stub)
     {
-        $replacements = $this->module->config('stubs.replacements');
+        $replacements = $this->cms->config('stubs.replacements');
 
         if (!isset($replacements[$stub])) {
             return [];
@@ -465,7 +465,7 @@ class CMSGenerator extends Generator
      */
     private function generateCMSJsonFile()
     {
-        $path = $this->module->getCMSPath($this->getName()) . 'module.json';
+        $path = $this->cms->getCMSPath($this->getName()) . 'module.json';
 
         if (!$this->filesystem->isDirectory($dir = dirname($path))) {
             $this->filesystem->makeDirectory($dir, 0775, true);
@@ -482,7 +482,7 @@ class CMSGenerator extends Generator
      */
     private function cleanCMSJsonFile()
     {
-        $path = $this->module->getCMSPath($this->getName()) . 'module.json';
+        $path = $this->cms->getCMSPath($this->getName()) . 'module.json';
 
         $content = $this->filesystem->get($path);
         $namespace = $this->getCMSNamespaceReplacement();
@@ -522,7 +522,7 @@ class CMSGenerator extends Generator
      */
     protected function getVendorReplacement()
     {
-        return $this->module->config('composer.vendor');
+        return $this->cms->config('composer.vendor');
     }
 
     /**
@@ -532,7 +532,7 @@ class CMSGenerator extends Generator
      */
     protected function getCMSNamespaceReplacement()
     {
-        return str_replace('\\', '\\\\', $this->module->config('namespace'));
+        return str_replace('\\', '\\\\', $this->cms->config('namespace'));
     }
 
     /**
@@ -542,7 +542,7 @@ class CMSGenerator extends Generator
      */
     protected function getAuthorNameReplacement()
     {
-        return $this->module->config('composer.author.name');
+        return $this->cms->config('composer.author.name');
     }
 
     /**
@@ -552,7 +552,7 @@ class CMSGenerator extends Generator
      */
     protected function getAuthorEmailReplacement()
     {
-        return $this->module->config('composer.author.email');
+        return $this->cms->config('composer.author.email');
     }
 
     protected function getProviderNamespaceReplacement(): string

@@ -39,7 +39,7 @@ abstract class CMS
     /**
      * @var array of cached Json objects, keyed by filename
      */
-    protected $moduleJson = [];
+    protected $cmsJson = [];
     /**
      * @var CacheManager
      */
@@ -223,8 +223,8 @@ abstract class CMS
             $file = 'module.json';
         }
 
-        return Arr::get($this->moduleJson, $file, function () use ($file) {
-            return $this->moduleJson[$file] = new Json($this->getPath() . '/' . $file, $this->files);
+        return Arr::get($this->cmsJson, $file, function () use ($file) {
+            return $this->cmsJson[$file] = new Json($this->getPath() . '/' . $file, $this->files);
         });
     }
 

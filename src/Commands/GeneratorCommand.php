@@ -79,11 +79,11 @@ abstract class GeneratorCommand extends Command
     /**
      * Get class namespace.
      *
-     * @param \AdUpFastcheckouts\adupiov3modulesmanager\CMS $module
+     * @param \AdUpFastcheckouts\adupiov3modulesmanager\CMS $cms
      *
      * @return string
      */
-    public function getClassNamespace($module)
+    public function getClassNamespace($cms)
     {
         $extra = str_replace($this->getClass(), '', $this->argument($this->argumentName));
 
@@ -91,7 +91,7 @@ abstract class GeneratorCommand extends Command
 
         $namespace = $this->laravel['modules']->config('namespace');
 
-        $namespace .= '\\' . $module->getStudlyName();
+        $namespace .= '\\' . $cms->getStudlyName();
 
         $namespace .= '\\' . $this->getDefaultNamespace();
 

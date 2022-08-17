@@ -27,17 +27,17 @@ class UseCommand extends Command
      */
     public function handle(): int
     {
-        $module = Str::studly($this->argument('module'));
+        $cms = Str::studly($this->argument('cms'));
 
-        if (!$this->laravel['modules']->has($module)) {
-            $this->error("CMS [{$module}] does not exists.");
+        if (!$this->laravel['modules']->has($cms)) {
+            $this->error("CMS [{$cms}] does not exists.");
 
             return E_ERROR;
         }
 
-        $this->laravel['modules']->setUsed($module);
+        $this->laravel['modules']->setUsed($cms);
 
-        $this->info("CMS [{$module}] used successfully.");
+        $this->info("CMS [{$cms}] used successfully.");
 
         return 0;
     }
@@ -50,7 +50,7 @@ class UseCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::REQUIRED, 'The name of module will be used.'],
+            ['cms', InputArgument::REQUIRED, 'The name of module will be used.'],
         ];
     }
 }

@@ -35,9 +35,9 @@ class MiddlewareMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.filter.namespace') ?: $module->config('paths.generator.filter.path', 'Http/Middleware');
+        return $cms->config('paths.generator.filter.namespace') ?: $cms->config('paths.generator.filter.path', 'Http/Middleware');
     }
 
     /**
@@ -49,7 +49,7 @@ class MiddlewareMakeCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the command.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -58,10 +58,10 @@ class MiddlewareMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/middleware.stub', [
-            'NAMESPACE' => $this->getClassNamespace($module),
+            'NAMESPACE' => $this->getClassNamespace($cms),
             'CLASS'     => $this->getClass(),
         ]))->render();
     }

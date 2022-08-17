@@ -14,7 +14,7 @@ class Migrator
      * CMS instance.
      * @var CMS
      */
-    protected $module;
+    protected $cms;
 
     /**
      * Laravel Application instance.
@@ -32,12 +32,12 @@ class Migrator
 
     /**
      * Create new instance.
-     * @param CMS $module
+     * @param CMS $cms
      * @param Application $application
      */
-    public function __construct(CMS $module, Application $application)
+    public function __construct(CMS $cms, Application $application)
     {
-        $this->module = $module;
+        $this->cms = $cms;
         $this->laravel = $application;
     }
 
@@ -62,7 +62,7 @@ class Migrator
      */
     public function getCMS()
     {
-        return $this->module;
+        return $this->cms;
     }
 
     /**
@@ -72,12 +72,12 @@ class Migrator
      */
     public function getPath()
     {
-        $config = $this->module->get('migration');
+        $config = $this->cms->get('migration');
 
         $migrationPath = GenerateConfigReader::read('migration');
         $path = (is_array($config) && array_key_exists('path', $config)) ? $config['path'] : $migrationPath->getPath();
 
-        return $this->module->getExtraPath($path);
+        return $this->cms->getExtraPath($path);
     }
 
     /**

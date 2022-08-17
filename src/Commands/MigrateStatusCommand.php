@@ -27,7 +27,7 @@ class MigrateStatusCommand extends Command
     /**
      * @var \AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface
      */
-    protected $module;
+    protected $cms;
 
     /**
      * Execute the console command.
@@ -36,21 +36,21 @@ class MigrateStatusCommand extends Command
      */
     public function handle(): int
     {
-        $this->module = $this->laravel['modules'];
+        $this->cms = $this->laravel['modules'];
 
-        $name = $this->argument('module');
+        $name = $this->argument('cms');
 
         if ($name) {
-            $module = $this->module->findOrFail($name);
+            $cms = $this->cms->findOrFail($name);
 
-            $this->migrateStatus($module);
+            $this->migrateStatus($cms);
 
             return 0;
         }
 
-        foreach ($this->module->getOrdered($this->option('direction')) as $module) {
-            $this->line('Running for module: <info>' . $module->getName() . '</info>');
-            $this->migrateStatus($module);
+        foreach ($this->cms->getOrdered($this->option('direction')) as $cms) {
+            $this->line('Running for module: <info>' . $cms->getName() . '</info>');
+            $this->migrateStatus($cms);
         }
 
         return 0;
@@ -59,11 +59,11 @@ class MigrateStatusCommand extends Command
     /**
      * Run the migration from the specified module.
      *
-     * @param CMS $module
+     * @param CMS $cms
      */
-    protected function migrateStatus(CMS $module)
+    protected function migrateStatus(CMS $cms)
     {
-        $path = str_replace(base_path(), '', (new Migrator($module, $this->getLaravel()))->getPath());
+        $path = str_replace(base_path(), '', (new Migrator($cms, $this->getLaravel()))->getPath());
 
         $this->call('migrate:status', [
             '--path' => $path,
@@ -79,7 +79,7 @@ class MigrateStatusCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 

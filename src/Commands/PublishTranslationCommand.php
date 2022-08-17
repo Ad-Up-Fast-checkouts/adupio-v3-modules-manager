@@ -28,7 +28,7 @@ class PublishTranslationCommand extends Command
      */
     public function handle(): int
     {
-        if ($name = $this->argument('module')) {
+        if ($name = $this->argument('cms')) {
             $this->publish($name);
 
             return 0;
@@ -44,8 +44,8 @@ class PublishTranslationCommand extends Command
      */
     public function publishAll()
     {
-        foreach ($this->laravel['modules']->allEnabled() as $module) {
-            $this->publish($module);
+        foreach ($this->laravel['modules']->allEnabled() as $cms) {
+            $this->publish($cms);
         }
     }
 
@@ -57,17 +57,17 @@ class PublishTranslationCommand extends Command
     public function publish($name)
     {
         if ($name instanceof CMS) {
-            $module = $name;
+            $cms = $name;
         } else {
-            $module = $this->laravel['modules']->findOrFail($name);
+            $cms = $this->laravel['modules']->findOrFail($name);
         }
 
-        with(new LangPublisher($module))
+        with(new LangPublisher($cms))
             ->setRepository($this->laravel['modules'])
             ->setConsole($this)
             ->publish();
 
-        $this->line("<info>Published</info>: {$module->getStudlyName()}");
+        $this->line("<info>Published</info>: {$cms->getStudlyName()}");
     }
 
     /**
@@ -78,7 +78,7 @@ class PublishTranslationCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 }

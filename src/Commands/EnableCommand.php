@@ -30,21 +30,21 @@ class EnableCommand extends Command
         /**
          * check if user entred an argument
          */
-        if ($this->argument('module') === null) {
+        if ($this->argument('cms') === null) {
             $this->enableAll();
 
             return 0;
         }
 
-        /** @var CMS $module */
-        $module = $this->laravel['modules']->findOrFail($this->argument('module'));
+        /** @var CMS $cms */
+        $cms = $this->laravel['modules']->findOrFail($this->argument('cms'));
 
-        if ($module->isDisabled()) {
-            $module->enable();
+        if ($cms->isDisabled()) {
+            $cms->enable();
 
-            $this->info("CMS [{$module}] enabled successful.");
+            $this->info("CMS [{$cms}] enabled successful.");
         } else {
-            $this->comment("CMS [{$module}] has already enabled.");
+            $this->comment("CMS [{$cms}] has already enabled.");
         }
 
         return 0;
@@ -57,16 +57,16 @@ class EnableCommand extends Command
      */
     public function enableAll()
     {
-        /** @var CMSs $modules */
-        $modules = $this->laravel['modules']->all();
+        /** @var CMSs $cmss */
+        $cmss = $this->laravel['modules']->all();
 
-        foreach ($modules as $module) {
-            if ($module->isDisabled()) {
-                $module->enable();
+        foreach ($cmss as $cms) {
+            if ($cms->isDisabled()) {
+                $cms->enable();
 
-                $this->info("CMS [{$module}] enabled successful.");
+                $this->info("CMS [{$cms}] enabled successful.");
             } else {
-                $this->comment("CMS [{$module}] has already enabled.");
+                $this->comment("CMS [{$cms}] has already enabled.");
             }
         }
     }
@@ -79,7 +79,7 @@ class EnableCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'CMS name.'],
+            ['cms', InputArgument::OPTIONAL, 'CMS name.'],
         ];
     }
 }

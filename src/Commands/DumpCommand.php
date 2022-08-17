@@ -28,24 +28,24 @@ class DumpCommand extends Command
     {
         $this->info('Generating optimized autoload modules.');
 
-        if ($module = $this->argument('module')) {
-            $this->dump($module);
+        if ($cms = $this->argument('cms')) {
+            $this->dump($cms);
         } else {
-            foreach ($this->laravel['modules']->all() as $module) {
-                $this->dump($module->getStudlyName());
+            foreach ($this->laravel['modules']->all() as $cms) {
+                $this->dump($cms->getStudlyName());
             }
         }
 
         return 0;
     }
 
-    public function dump($module)
+    public function dump($cms)
     {
-        $module = $this->laravel['modules']->findOrFail($module);
+        $cms = $this->laravel['modules']->findOrFail($cms);
 
-        $this->line("<comment>Running for module</comment>: {$module}");
+        $this->line("<comment>Running for module</comment>: {$cms}");
 
-        chdir($module->getPath());
+        chdir($cms->getPath());
 
         passthru('composer dump -o -n -q');
     }
@@ -58,7 +58,7 @@ class DumpCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'CMS name.'],
+            ['cms', InputArgument::OPTIONAL, 'CMS name.'],
         ];
     }
 }

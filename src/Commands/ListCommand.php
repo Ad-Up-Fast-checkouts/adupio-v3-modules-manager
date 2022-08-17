@@ -41,13 +41,13 @@ class ListCommand extends Command
     {
         $rows = [];
 
-        /** @var CMS $module */
-        foreach ($this->getCMSs() as $module) {
+        /** @var CMS $cms */
+        foreach ($this->getCMSs() as $cms) {
             $rows[] = [
-                $module->getName(),
-                $module->isEnabled() ? 'Enabled' : 'Disabled',
-                $module->get('priority'),
-                $module->getPath(),
+                $cms->getName(),
+                $cms->isEnabled() ? 'Enabled' : 'Disabled',
+                $cms->get('priority'),
+                $cms->getPath(),
             ];
         }
 

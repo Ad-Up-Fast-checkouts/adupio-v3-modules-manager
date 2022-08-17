@@ -15,24 +15,24 @@ class LaravelCMSsV6Migrator extends Command
 
     public function handle(): int
     {
-        $moduleStatuses = [];
-        /** @var RepositoryInterface $modules */
-        $modules = $this->laravel['modules'];
+        $cmsStatuses = [];
+        /** @var RepositoryInterface $cmss */
+        $cmss = $this->laravel['modules'];
 
-        $modules = $modules->all();
-        /** @var CMS $module */
-        foreach ($modules as $module) {
-            if ($module->json()->get('active') === 1) {
-                $module->enable();
-                $moduleStatuses[] = [$module->getName(), 'Enabled'];
+        $cmss = $cmss->all();
+        /** @var CMS $cms */
+        foreach ($cmss as $cms) {
+            if ($cms->json()->get('active') === 1) {
+                $cms->enable();
+                $cmsStatuses[] = [$cms->getName(), 'Enabled'];
             }
-            if ($module->json()->get('active') === 0) {
-                $module->disable();
-                $moduleStatuses[] = [$module->getName(), 'Disabled'];
+            if ($cms->json()->get('active') === 0) {
+                $cms->disable();
+                $cmsStatuses[] = [$cms->getName(), 'Disabled'];
             }
         }
         $this->info('All modules have been migrated.');
-        $this->table(['CMS name', 'Status'], $moduleStatuses);
+        $this->table(['CMS name', 'Status'], $cmsStatuses);
 
         return 0;
     }

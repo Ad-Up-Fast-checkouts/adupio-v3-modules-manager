@@ -77,7 +77,7 @@ class ModelMakeCommand extends GeneratorCommand
     {
         return [
             ['model', InputArgument::REQUIRED, 'The name of model will be created.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -102,7 +102,7 @@ class ModelMakeCommand extends GeneratorCommand
     {
         if ($this->option('migration') === true) {
             $migrationName = 'create_' . $this->createMigrationName() . '_table';
-            $this->call('module:make-migration', ['name' => $migrationName, 'module' => $this->argument('module')]);
+            $this->call('module:make-migration', ['name' => $migrationName, 'cms' => $this->argument('cms')]);
         }
     }
 
@@ -116,7 +116,7 @@ class ModelMakeCommand extends GeneratorCommand
 
             $this->call('module:make-controller', array_filter([
                 'controller' => $controllerName,
-                'module' => $this->argument('module'),
+                'cms' => $this->argument('cms'),
             ]));
         }
     }
@@ -126,16 +126,16 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/model.stub', [
             'NAME'              => $this->getModelName(),
             'FILLABLE'          => $this->getFillable(),
-            'NAMESPACE'         => $this->getClassNamespace($module),
+            'NAMESPACE'         => $this->getClassNamespace($cms),
             'CLASS'             => $this->getClass(),
-            'LOWER_NAME'        => $module->getLowerName(),
+            'LOWER_NAME'        => $cms->getLowerName(),
             'MODULE'            => $this->getCMSName(),
-            'STUDLY_NAME'       => $module->getStudlyName(),
+            'STUDLY_NAME'       => $cms->getStudlyName(),
             'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
         ]))->render();
     }
@@ -183,8 +183,8 @@ class ModelMakeCommand extends GeneratorCommand
      */
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.model.namespace') ?: $module->config('paths.generator.model.path', 'Entities');
+        return $cms->config('paths.generator.model.namespace') ?: $cms->config('paths.generator.model.path', 'Entities');
     }
 }

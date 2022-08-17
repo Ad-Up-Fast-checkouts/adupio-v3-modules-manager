@@ -62,17 +62,17 @@ class InstallCommand extends Command
             return E_ERROR;
         }
 
-        $modules = Json::make($path);
+        $cmss = Json::make($path);
 
-        $dependencies = $modules->get('require', []);
+        $dependencies = $cmss->get('require', []);
 
-        foreach ($dependencies as $module) {
-            $module = collect($module);
+        foreach ($dependencies as $cms) {
+            $cms = collect($cms);
 
             $this->install(
-                $module->get('name'),
-                $module->get('version'),
-                $module->get('type')
+                $cms->get('name'),
+                $cms->get('version'),
+                $cms->get('type')
             );
         }
 
@@ -112,7 +112,7 @@ class InstallCommand extends Command
 
         if (!$this->option('no-update')) {
             $this->call('module:update', [
-                'module' => $installer->getCMSName(),
+                'cms' => $installer->getCMSName(),
             ]);
         }
     }

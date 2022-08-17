@@ -29,7 +29,7 @@ class UpdateCommand extends Command
      */
     public function handle(): int
     {
-        $name = $this->argument('module');
+        $name = $this->argument('cms');
 
         if ($name) {
             $this->updateCMS($name);
@@ -37,9 +37,9 @@ class UpdateCommand extends Command
             return 0;
         }
 
-        /** @var \AdUpFastcheckouts\adupiov3modulesmanager\CMS $module */
-        foreach ($this->laravel['modules']->getOrdered() as $module) {
-            $this->updateCMS($module->getName());
+        /** @var \AdUpFastcheckouts\adupiov3modulesmanager\CMS $cms */
+        foreach ($this->laravel['modules']->getOrdered() as $cms) {
+            $this->updateCMS($cms->getName());
         }
 
         return 0;
@@ -62,7 +62,7 @@ class UpdateCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be updated.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be updated.'],
         ];
     }
 }

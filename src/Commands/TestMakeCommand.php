@@ -19,13 +19,13 @@ class TestMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
         if ($this->option('feature')) {
-            return $module->config('paths.generator.test-feature.namespace') ?: $module->config('paths.generator.test-feature.path', 'Tests/Feature');
+            return $cms->config('paths.generator.test-feature.namespace') ?: $cms->config('paths.generator.test-feature.path', 'Tests/Feature');
         }
 
-        return $module->config('paths.generator.test.namespace') ?: $module->config('paths.generator.test.path', 'Tests/Unit');
+        return $cms->config('paths.generator.test.namespace') ?: $cms->config('paths.generator.test.path', 'Tests/Unit');
     }
 
     /**
@@ -37,7 +37,7 @@ class TestMakeCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the form request class.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -58,7 +58,7 @@ class TestMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
         $stub = '/unit-test.stub';
 
         if ($this->option('feature')) {
@@ -66,7 +66,7 @@ class TestMakeCommand extends GeneratorCommand
         }
 
         return (new Stub($stub, [
-            'NAMESPACE' => $this->getClassNamespace($module),
+            'NAMESPACE' => $this->getClassNamespace($cms),
             'CLASS'     => $this->getClass(),
         ]))->render();
     }

@@ -39,7 +39,7 @@ class ListenerMakeCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the command.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 
@@ -58,11 +58,11 @@ class ListenerMakeCommand extends GeneratorCommand
 
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
-            'NAMESPACE' => $this->getClassNamespace($module),
-            'EVENTNAME' => $this->getEventName($module),
+            'NAMESPACE' => $this->getClassNamespace($cms),
+            'EVENTNAME' => $this->getEventName($cms),
             'SHORTEVENTNAME' => $this->getShortEventName(),
             'CLASS' => $this->getClass(),
         ]))->render();
@@ -70,14 +70,14 @@ class ListenerMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.listener.namespace') ?: $module->config('paths.generator.listener.path', 'Listeners');
+        return $cms->config('paths.generator.listener.namespace') ?: $cms->config('paths.generator.listener.path', 'Listeners');
     }
 
-    protected function getEventName(CMS $module)
+    protected function getEventName(CMS $cms)
     {
-        $namespace = $this->laravel['modules']->config('namespace') . "\\" . $module->getStudlyName();
+        $namespace = $this->laravel['modules']->config('namespace') . "\\" . $cms->getStudlyName();
         $eventPath = GenerateConfigReader::read('event');
 
         $eventName = $namespace . "\\" . $eventPath->getPath() . "\\" . $this->option('event');

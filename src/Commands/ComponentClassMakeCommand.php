@@ -49,14 +49,14 @@ class ComponentClassMakeCommand extends GeneratorCommand
      */
     protected function writeComponentViewTemplate()
     {
-        $this->call('module:make-component-view', ['name' => $this->argument('name') , 'module' => $this->argument('module')]);
+        $this->call('module:make-component-view', ['name' => $this->argument('name') , 'cms' => $this->argument('cms')]);
     }
 
     public function getDefaultNamespace(): string
     {
-        $module = $this->laravel['modules'];
+        $cms = $this->laravel['modules'];
 
-        return $module->config('paths.generator.component-class.namespace') ?: $module->config('paths.generator.component-class.path', 'View/Component');
+        return $cms->config('paths.generator.component-class.namespace') ?: $cms->config('paths.generator.component-class.path', 'View/Component');
     }
 
     /**
@@ -68,7 +68,7 @@ class ComponentClassMakeCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the component.'],
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
     /**
@@ -76,12 +76,12 @@ class ComponentClassMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/component-class.stub', [
-            'NAMESPACE'         => $this->getClassNamespace($module),
+            'NAMESPACE'         => $this->getClassNamespace($cms),
             'CLASS'             => $this->getClass(),
-            'LOWER_NAME'        => $module->getLowerName(),
+            'LOWER_NAME'        => $cms->getLowerName(),
             'COMPONENT_NAME'    => 'components.' . Str::lower($this->argument('name')),
         ]))->render();
     }

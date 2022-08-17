@@ -38,12 +38,12 @@ class SeedCommand extends Command
     public function handle(): int
     {
         try {
-            if ($name = $this->argument('module')) {
+            if ($name = $this->argument('cms')) {
                 $name = Str::studly($name);
-                $this->moduleSeed($this->getCMSByName($name));
+                $this->cmsSeed($this->getCMSByName($name));
             } else {
-                $modules = $this->getCMSRepository()->getOrdered();
-                array_walk($modules, [$this, 'moduleSeed']);
+                $cmss = $this->getCMSRepository()->getOrdered();
+                array_walk($cmss, [$this, 'moduleSeed']);
                 $this->info('All modules seeded.');
             }
         } catch (\Error $e) {
@@ -68,12 +68,12 @@ class SeedCommand extends Command
      */
     public function getCMSRepository(): RepositoryInterface
     {
-        $modules = $this->laravel['modules'];
-        if (!$modules instanceof RepositoryInterface) {
+        $cmss = $this->laravel['modules'];
+        if (!$cmss instanceof RepositoryInterface) {
             throw new RuntimeException('CMS repository not found!');
         }
 
-        return $modules;
+        return $cmss;
     }
 
     /**
@@ -85,24 +85,24 @@ class SeedCommand extends Command
      */
     public function getCMSByName($name)
     {
-        $modules = $this->getCMSRepository();
-        if ($modules->has($name) === false) {
+        $cmss = $this->getCMSRepository();
+        if ($cmss->has($name) === false) {
             throw new RuntimeException("CMS [$name] does not exists.");
         }
 
-        return $modules->find($name);
+        return $cmss->find($name);
     }
 
     /**
-     * @param CMS $module
+     * @param CMS $cms
      *
      * @return void
      */
-    public function moduleSeed(CMS $module)
+    public function moduleSeed(CMS $cms)
     {
         $seeders = [];
-        $name = $module->getName();
-        $config = $module->get('migration');
+        $name = $cms->getName();
+        $config = $cms->get('migration');
         if (is_array($config) && array_key_exists('seeds', $config)) {
             foreach ((array)$config['seeds'] as $class) {
                 if (class_exists($class)) {
@@ -226,7 +226,7 @@ class SeedCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'The name of module will be used.'],
+            ['cms', InputArgument::OPTIONAL, 'The name of module will be used.'],
         ];
     }
 

@@ -30,19 +30,19 @@ class DisableCommand extends Command
         /**
          * check if user entred an argument
          */
-        if ($this->argument('module') === null) {
+        if ($this->argument('cms') === null) {
             $this->disableAll();
         }
 
-        /** @var CMS $module */
-        $module = $this->laravel['modules']->findOrFail($this->argument('module'));
+        /** @var CMS $cms */
+        $cms = $this->laravel['modules']->findOrFail($this->argument('cms'));
 
-        if ($module->isEnabled()) {
-            $module->disable();
+        if ($cms->isEnabled()) {
+            $cms->disable();
 
-            $this->info("CMS [{$module}] disabled successful.");
+            $this->info("CMS [{$cms}] disabled successful.");
         } else {
-            $this->comment("CMS [{$module}] has already disabled.");
+            $this->comment("CMS [{$cms}] has already disabled.");
         }
 
         return 0;
@@ -55,16 +55,16 @@ class DisableCommand extends Command
      */
     public function disableAll()
     {
-        /** @var CMSs $modules */
-        $modules = $this->laravel['modules']->all();
+        /** @var CMSs $cmss */
+        $cmss = $this->laravel['modules']->all();
 
-        foreach ($modules as $module) {
-            if ($module->isEnabled()) {
-                $module->disable();
+        foreach ($cmss as $cms) {
+            if ($cms->isEnabled()) {
+                $cms->disable();
 
-                $this->info("CMS [{$module}] disabled successful.");
+                $this->info("CMS [{$cms}] disabled successful.");
             } else {
-                $this->comment("CMS [{$module}] has already disabled.");
+                $this->comment("CMS [{$cms}] has already disabled.");
             }
         }
     }
@@ -77,7 +77,7 @@ class DisableCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'CMS name.'],
+            ['cms', InputArgument::OPTIONAL, 'CMS name.'],
         ];
     }
 }

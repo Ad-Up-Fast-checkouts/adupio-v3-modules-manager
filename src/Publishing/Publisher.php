@@ -14,7 +14,7 @@ abstract class Publisher implements PublisherInterface
      *
      * @var string
      */
-    protected $module;
+    protected $cms;
 
     /**
      * The modules repository instance.
@@ -53,11 +53,11 @@ abstract class Publisher implements PublisherInterface
     /**
      * The constructor.
      *
-     * @param CMS $module
+     * @param CMS $cms
      */
-    public function __construct(CMS $module)
+    public function __construct(CMS $cms)
     {
-        $this->module = $module;
+        $this->cms = $cms;
     }
 
     /**
@@ -91,7 +91,7 @@ abstract class Publisher implements PublisherInterface
      */
     public function getCMS()
     {
-        return $this->module;
+        return $this->cms;
     }
 
     /**
@@ -185,7 +185,7 @@ abstract class Publisher implements PublisherInterface
 
         if ($this->getFilesystem()->copyDirectory($sourcePath, $destinationPath)) {
             if ($this->showMessage === true) {
-                $this->console->line("<info>Published</info>: {$this->module->getStudlyName()}");
+                $this->console->line("<info>Published</info>: {$this->cms->getStudlyName()}");
             }
         } else {
             $this->console->error($this->error);
