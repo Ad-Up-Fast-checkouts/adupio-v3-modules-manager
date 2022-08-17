@@ -9,17 +9,17 @@ class Updater extends Runner
     /**
      * Update the dependencies for the specified module by given the module name.
      *
-     * @param string $module
+     * @param string $cms
      */
-    public function update($module)
+    public function update($cms)
     {
-        $module = $this->module->findOrFail($module);
+        $cms = $this->cms->findOrFail($cms);
 
         chdir(base_path());
 
-        $this->installRequires($module);
-        $this->installDevRequires($module);
-        $this->copyScriptsToMainComposerJson($module);
+        $this->installRequires($cms);
+        $this->installDevRequires($cms);
+        $this->copyScriptsToMainComposerJson($cms);
     }
 
     /**
@@ -33,11 +33,11 @@ class Updater extends Runner
     }
 
     /**
-     * @param CMS $module
+     * @param CMS $cms
      */
-    private function installRequires(CMS $module)
+    private function installRequires(CMS $cms)
     {
-        $packages = $module->getComposerAttr('require', []);
+        $packages = $cms->getComposerAttr('require', []);
 
         $concatenatedPackages = '';
         foreach ($packages as $name => $version) {
@@ -50,11 +50,11 @@ class Updater extends Runner
     }
 
     /**
-     * @param CMS $module
+     * @param CMS $cms
      */
-    private function installDevRequires(CMS $module)
+    private function installDevRequires(CMS $cms)
     {
-        $devPackages = $module->getComposerAttr('require-dev', []);
+        $devPackages = $cms->getComposerAttr('require-dev', []);
 
         $concatenatedPackages = '';
         foreach ($devPackages as $name => $version) {
@@ -67,11 +67,11 @@ class Updater extends Runner
     }
 
     /**
-     * @param CMS $module
+     * @param CMS $cms
      */
-    private function copyScriptsToMainComposerJson(CMS $module)
+    private function copyScriptsToMainComposerJson(CMS $cms)
     {
-        $scripts = $module->getComposerAttr('scripts', []);
+        $scripts = $cms->getComposerAttr('scripts', []);
 
         $composer = json_decode(file_get_contents(base_path('composer.json')), true);
 
