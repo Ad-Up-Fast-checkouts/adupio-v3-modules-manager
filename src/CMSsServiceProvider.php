@@ -44,7 +44,7 @@ abstract class CMSsServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            $stubsPath => base_path('stubs/sanjayaharshana-stubs'),
+            $stubsPath => base_path('stubs/adupfastcheckouts-stubs'),
         ], 'stubs');
     }
 

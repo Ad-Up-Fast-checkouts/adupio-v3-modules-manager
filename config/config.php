@@ -27,7 +27,7 @@ return [
 
     'stubs' => [
         'enabled' => false,
-        'path' => base_path('vendor/sanjayaharshana/laravel-modules/src/Commands/stubs'),
+        'path' => base_path('vendor/adupfastcheckouts/laravel-modules/src/Commands/stubs'),
         'files' => [
             'routes/web' => 'Routes/web.php',
             'routes/api' => 'Routes/api.php',
@@ -213,7 +213,7 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'sanjayaharshana',
+        'vendor' => 'adupfastcheckouts',
         'author' => [
             'name' => 'Nicolas Widart',
             'email' => 'n.widart@gmail.com',
