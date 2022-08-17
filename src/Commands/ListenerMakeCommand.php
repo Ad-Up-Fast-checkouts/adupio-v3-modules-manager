@@ -58,7 +58,7 @@ class ListenerMakeCommand extends GeneratorCommand
 
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
             'NAMESPACE' => $this->getClassNamespace($cms),
@@ -70,14 +70,14 @@ class ListenerMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.listener.namespace') ?: $cms->config('paths.generator.listener.path', 'Listeners');
     }
 
     protected function getEventName(CMS $cms)
     {
-        $namespace = $this->laravel['modules']->config('namespace') . "\\" . $cms->getStudlyName();
+        $namespace = $this->laravel['cmss']->config('namespace') . "\\" . $cms->getStudlyName();
         $eventPath = GenerateConfigReader::read('event');
 
         $eventName = $namespace . "\\" . $eventPath->getPath() . "\\" . $this->option('event');
@@ -92,7 +92,7 @@ class ListenerMakeCommand extends GeneratorCommand
 
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $listenerPath = GenerateConfigReader::read('listener');
 

@@ -30,7 +30,7 @@ final class NotificationMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.notifications.namespace') ?: $cms->config('paths.generator.notifications.path', 'Notifications');
     }
@@ -42,7 +42,7 @@ final class NotificationMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub('/notification.stub', [
             'NAMESPACE' => $this->getClassNamespace($cms),
@@ -57,7 +57,7 @@ final class NotificationMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $notificationPath = GenerateConfigReader::read('notifications');
 

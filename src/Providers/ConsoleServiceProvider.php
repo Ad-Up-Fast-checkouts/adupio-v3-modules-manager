@@ -61,7 +61,7 @@ class ConsoleServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->commands(config('modules.commands', $this->commands));
+        $this->commands(config('cmss.commands', $this->commands));
     }
 
     public function provides(): array

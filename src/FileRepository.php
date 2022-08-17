@@ -145,7 +145,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
         $cmss = [];
 
         foreach ($paths as $key => $path) {
-            $manifests = $this->getFiles()->glob("{$path}/module.json");
+            $manifests = $this->getFiles()->glob("{$path}/cms.json");
 
             is_array($manifests) || $manifests = [];
 
@@ -309,7 +309,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function getPath(): string
     {
-        return $this->path ?: $this->config('paths.modules', base_path('CMSs'));
+        return $this->path ?: $this->config('paths.cmss', base_path('CMSs'));
     }
 
     /**
@@ -437,7 +437,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function config(string $key, $default = null)
     {
-        return $this->config->get('modules.' . $key, $default);
+        return $this->config->get('cmss.' . $key, $default);
     }
 
     /**

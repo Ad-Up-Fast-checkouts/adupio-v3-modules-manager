@@ -17,7 +17,7 @@ class LaravelCMSsV6Migrator extends Command
     {
         $cmsStatuses = [];
         /** @var RepositoryInterface $cmss */
-        $cmss = $this->laravel['modules'];
+        $cmss = $this->laravel['cmss'];
 
         $cmss = $cmss->all();
         /** @var CMS $cms */

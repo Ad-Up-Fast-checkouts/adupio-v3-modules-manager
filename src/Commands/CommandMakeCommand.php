@@ -36,7 +36,7 @@ class CommandMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.command.namespace') ?: $cms->config('paths.generator.command.path', 'Console');
     }
@@ -71,7 +71,7 @@ class CommandMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub('/command.stub', [
             'COMMAND_NAME' => $this->getCommandName(),
@@ -93,7 +93,7 @@ class CommandMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $commandPath = GenerateConfigReader::read('command');
 

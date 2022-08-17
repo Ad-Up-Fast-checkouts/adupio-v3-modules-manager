@@ -11,7 +11,7 @@ trait MigrationLoaderTrait
      */
     protected function loadMigrationFiles($cms)
     {
-        $path = $this->laravel['modules']->getCMSPath($cms) . $this->getMigrationGeneratorPath();
+        $path = $this->laravel['cmss']->getCMSPath($cms) . $this->getMigrationGeneratorPath();
 
         $files = $this->laravel['files']->glob($path . '/*_*.php');
 
@@ -27,6 +27,6 @@ trait MigrationLoaderTrait
      */
     protected function getMigrationGeneratorPath()
     {
-        return $this->laravel['modules']->config('paths.generator.migration');
+        return $this->laravel['cmss']->config('paths.generator.migration');
     }
 }

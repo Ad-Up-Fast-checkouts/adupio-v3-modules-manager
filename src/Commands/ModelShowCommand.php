@@ -57,11 +57,11 @@ class ModelShowCommand extends ShowModelCommand
             return $model;
         }
 
-        $rootNamespace = config('modules.namespace');
+        $rootNamespace = config('cmss.namespace');
 
         $modelPath = glob($rootNamespace . DIRECTORY_SEPARATOR .
             '*' . DIRECTORY_SEPARATOR .
-            config('modules.paths.generator.model.path') . DIRECTORY_SEPARATOR .
+            config('cmss.paths.generator.model.path') . DIRECTORY_SEPARATOR .
             "$model.php");
 
         if (!count($modelPath)) {

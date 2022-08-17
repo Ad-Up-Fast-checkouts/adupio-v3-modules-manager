@@ -35,7 +35,7 @@ class RuleMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.rules.namespace') ?: $cms->config('paths.generator.rules.path', 'Rules');
     }
@@ -58,7 +58,7 @@ class RuleMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub('/rule.stub', [
             'NAMESPACE' => $this->getClassNamespace($cms),
@@ -71,7 +71,7 @@ class RuleMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $rulePath = GenerateConfigReader::read('rules');
 

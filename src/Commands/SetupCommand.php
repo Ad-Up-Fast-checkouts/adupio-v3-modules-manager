@@ -36,7 +36,7 @@ class SetupCommand extends Command
     public function generateCMSsFolder()
     {
         return $this->generateDirectory(
-            $this->laravel['modules']->config('paths.modules'),
+            $this->laravel['cmss']->config('paths.cmss'),
             'CMSs directory created successfully',
             'CMSs directory already exist'
         );
@@ -48,7 +48,7 @@ class SetupCommand extends Command
     public function generateAssetsFolder()
     {
         return $this->generateDirectory(
-            $this->laravel['modules']->config('paths.assets'),
+            $this->laravel['cmss']->config('paths.assets'),
             'Assets directory created successfully',
             'Assets directory already exist'
         );

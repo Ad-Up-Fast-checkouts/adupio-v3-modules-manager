@@ -9,8 +9,8 @@ trait CanClearCMSsCache
      */
     public function clearCache()
     {
-        if (config('modules.cache.enabled') === true) {
-            app('cache')->forget(config('modules.cache.key'));
+        if (config('cmss.cache.enabled') === true) {
+            app('cache')->forget(config('cmss.cache.key'));
         }
     }
 }

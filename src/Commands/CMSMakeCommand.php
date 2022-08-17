@@ -35,7 +35,7 @@ class CMSMakeCommand extends Command
         foreach ($names as $name) {
             $code = with(new CMSGenerator($name))
                 ->setFilesystem($this->laravel['files'])
-                ->setCMS($this->laravel['modules'])
+                ->setCMS($this->laravel['cmss'])
                 ->setConfig($this->laravel['config'])
                 ->setActivator($this->laravel[ActivatorInterface::class])
                 ->setConsole($this)

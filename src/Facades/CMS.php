@@ -13,6 +13,6 @@ class CMS extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'modules';
+        return 'cmss';
     }
 }

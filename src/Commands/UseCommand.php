@@ -29,13 +29,13 @@ class UseCommand extends Command
     {
         $cms = Str::studly($this->argument('cms'));
 
-        if (!$this->laravel['modules']->has($cms)) {
+        if (!$this->laravel['cmss']->has($cms)) {
             $this->error("CMS [{$cms}] does not exists.");
 
             return E_ERROR;
         }
 
-        $this->laravel['modules']->setUsed($cms);
+        $this->laravel['cmss']->setUsed($cms);
 
         $this->info("CMS [{$cms}] used successfully.");
 

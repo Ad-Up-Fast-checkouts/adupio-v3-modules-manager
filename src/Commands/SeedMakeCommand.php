@@ -66,7 +66,7 @@ class SeedMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub('/seeder.stub', [
             'NAME' => $this->getSeederName(),
@@ -83,7 +83,7 @@ class SeedMakeCommand extends GeneratorCommand
     {
         $this->clearCache();
 
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $seederPath = GenerateConfigReader::read('seeder');
 
@@ -109,7 +109,7 @@ class SeedMakeCommand extends GeneratorCommand
      */
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.seeder.namespace') ?: $cms->config('paths.generator.seeder.path', 'Database/Seeders');
     }

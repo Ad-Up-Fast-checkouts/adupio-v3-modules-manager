@@ -3,7 +3,7 @@
 if (! function_exists('module_path')) {
     function module_path($name, $path = '')
     {
-        $cms = app('modules')->find($name);
+        $cms = app('cmss')->find($name);
 
         return $cms->getPath() . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }

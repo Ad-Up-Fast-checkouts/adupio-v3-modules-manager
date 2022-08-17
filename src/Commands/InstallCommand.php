@@ -56,8 +56,8 @@ class InstallCommand extends Command
      */
     protected function installFromFile(): int
     {
-        if (!file_exists($path = base_path('modules.json'))) {
-            $this->error("File 'modules.json' does not exist in your project root.");
+        if (!file_exists($path = base_path('cmss.json'))) {
+            $this->error("File 'cmss.json' does not exist in your project root.");
 
             return E_ERROR;
         }
@@ -96,7 +96,7 @@ class InstallCommand extends Command
             $tree ?: $this->option('tree')
         );
 
-        $installer->setRepository($this->laravel['modules']);
+        $installer->setRepository($this->laravel['cmss']);
 
         $installer->setConsole($this);
 

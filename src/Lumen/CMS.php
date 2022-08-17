@@ -12,7 +12,7 @@ class CMS extends BaseCMS
      */
     public function getCachedServicesPath(): string
     {
-        return Str::replaceLast('services.php', $this->getSnakeName() . '_module.php', $this->app->basePath('storage/app/') . 'services.php');
+        return Str::replaceLast('services.php', $this->getSnakeName() . '_cms.php', $this->app->basePath('storage/app/') . 'services.php');
     }
 
     /**

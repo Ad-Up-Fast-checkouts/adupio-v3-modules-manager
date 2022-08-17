@@ -44,7 +44,7 @@ class PublishTranslationCommand extends Command
      */
     public function publishAll()
     {
-        foreach ($this->laravel['modules']->allEnabled() as $cms) {
+        foreach ($this->laravel['cmss']->allEnabled() as $cms) {
             $this->publish($cms);
         }
     }
@@ -59,11 +59,11 @@ class PublishTranslationCommand extends Command
         if ($name instanceof CMS) {
             $cms = $name;
         } else {
-            $cms = $this->laravel['modules']->findOrFail($name);
+            $cms = $this->laravel['cmss']->findOrFail($name);
         }
 
         with(new LangPublisher($cms))
-            ->setRepository($this->laravel['modules'])
+            ->setRepository($this->laravel['cmss'])
             ->setConsole($this)
             ->publish();
 

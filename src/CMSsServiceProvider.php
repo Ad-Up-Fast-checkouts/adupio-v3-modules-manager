@@ -40,7 +40,7 @@ abstract class CMSsServiceProvider extends ServiceProvider
         $stubsPath = dirname(__DIR__) . '/src/Commands/stubs';
 
         $this->publishes([
-            $configPath => config_path('modules.php'),
+            $configPath => config_path('cmss.php'),
         ], 'config');
 
         $this->publishes([
@@ -60,7 +60,7 @@ abstract class CMSsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [Contracts\RepositoryInterface::class, 'modules'];
+        return [Contracts\RepositoryInterface::class, 'cmss'];
     }
 
     /**

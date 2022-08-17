@@ -11,9 +11,9 @@ trait CMSCommandTrait
      */
     public function getCMSName()
     {
-        $cms = $this->argument('cms') ?: app('modules')->getUsedNow();
+        $cms = $this->argument('cms') ?: app('cmss')->getUsedNow();
 
-        $cms = app('modules')->findOrFail($cms);
+        $cms = app('cmss')->findOrFail($cms);
 
         return $cms->getStudlyName();
     }

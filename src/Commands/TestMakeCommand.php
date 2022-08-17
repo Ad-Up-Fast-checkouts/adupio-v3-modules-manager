@@ -19,7 +19,7 @@ class TestMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         if ($this->option('feature')) {
             return $cms->config('paths.generator.test-feature.namespace') ?: $cms->config('paths.generator.test-feature.path', 'Tests/Feature');
@@ -58,7 +58,7 @@ class TestMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
         $stub = '/unit-test.stub';
 
         if ($this->option('feature')) {
@@ -76,7 +76,7 @@ class TestMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         if ($this->option('feature')) {
             $testPath = GenerateConfigReader::read('test-feature');

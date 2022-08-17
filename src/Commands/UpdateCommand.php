@@ -38,7 +38,7 @@ class UpdateCommand extends Command
         }
 
         /** @var \AdUpFastcheckouts\adupiov3modulesmanager\CMS $cms */
-        foreach ($this->laravel['modules']->getOrdered() as $cms) {
+        foreach ($this->laravel['cmss']->getOrdered() as $cms) {
             $this->updateCMS($cms->getName());
         }
 
@@ -49,7 +49,7 @@ class UpdateCommand extends Command
     {
         $this->line('Running for module: <info>' . $name . '</info>');
 
-        $this->laravel['modules']->update($name);
+        $this->laravel['cmss']->update($name);
 
         $this->info("CMS [{$name}] updated successfully.");
     }

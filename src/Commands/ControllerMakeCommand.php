@@ -41,7 +41,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     public function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $controllerPath = GenerateConfigReader::read('controller');
 
@@ -53,7 +53,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
             'MODULENAME'        => $cms->getStudlyName(),
@@ -65,7 +65,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'MODULE'            => $this->getCMSName(),
             'NAME'              => $this->getCMSName(),
             'STUDLY_NAME'       => $cms->getStudlyName(),
-            'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
+            'MODULE_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
         ]))->render();
     }
 
@@ -117,7 +117,7 @@ class ControllerMakeCommand extends GeneratorCommand
 
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.controller.namespace') ?: $cms->config('paths.generator.controller.path', 'Http/Controllers');
     }

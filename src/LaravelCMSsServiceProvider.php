@@ -26,7 +26,7 @@ class LaravelCMSsServiceProvider extends CMSsServiceProvider
         $this->setupStubPath();
         $this->registerProviders();
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'modules');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'cmss');
     }
 
     /**
@@ -34,7 +34,7 @@ class LaravelCMSsServiceProvider extends CMSsServiceProvider
      */
     public function setupStubPath()
     {
-        $path = $this->app['config']->get('modules.stubs.path') ?? __DIR__ . '/Commands/stubs';
+        $path = $this->app['config']->get('cmss.stubs.path') ?? __DIR__ . '/Commands/stubs';
         Stub::setBasePath($path);
 
         $this->app->booted(function ($app) {
@@ -52,13 +52,13 @@ class LaravelCMSsServiceProvider extends CMSsServiceProvider
     protected function registerServices()
     {
         $this->app->singleton(Contracts\RepositoryInterface::class, function ($app) {
-            $path = $app['config']->get('modules.paths.modules');
+            $path = $app['config']->get('cmss.paths.cmss');
 
             return new Laravel\LaravelFileRepository($app, $path);
         });
         $this->app->singleton(Contracts\ActivatorInterface::class, function ($app) {
-            $activator = $app['config']->get('modules.activator');
-            $class = $app['config']->get('modules.activators.' . $activator)['class'];
+            $activator = $app['config']->get('cmss.activator');
+            $class = $app['config']->get('cmss.activators.' . $activator)['class'];
 
             if ($class === null) {
                 throw InvalidActivatorClass::missingConfig();
@@ -66,6 +66,6 @@ class LaravelCMSsServiceProvider extends CMSsServiceProvider
 
             return new $class($app);
         });
-        $this->app->alias(Contracts\RepositoryInterface::class, 'modules');
+        $this->app->alias(Contracts\RepositoryInterface::class, 'cmss');
     }
 }

@@ -34,7 +34,7 @@ class PublishConfigurationCommand extends Command
             return 0;
         }
 
-        foreach ($this->laravel['modules']->allEnabled() as $cms) {
+        foreach ($this->laravel['cmss']->allEnabled() as $cms) {
             $this->publishConfiguration($cms->getName());
         }
 
@@ -47,7 +47,7 @@ class PublishConfigurationCommand extends Command
      */
     private function getServiceProviderForCMS($cms)
     {
-        $namespace = $this->laravel['config']->get('modules.namespace');
+        $namespace = $this->laravel['config']->get('cmss.namespace');
         $studlyName = Str::studly($cms);
 
         return "$namespace\\$studlyName\\Providers\\{$studlyName}ServiceProvider";

@@ -29,14 +29,14 @@ class PublishMigrationCommand extends Command
     public function handle(): int
     {
         if ($name = $this->argument('cms')) {
-            $cms = $this->laravel['modules']->findOrFail($name);
+            $cms = $this->laravel['cmss']->findOrFail($name);
 
             $this->publish($cms);
 
             return 0;
         }
 
-        foreach ($this->laravel['modules']->allEnabled() as $cms) {
+        foreach ($this->laravel['cmss']->allEnabled() as $cms) {
             $this->publish($cms);
         }
 
@@ -51,7 +51,7 @@ class PublishMigrationCommand extends Command
     public function publish($cms)
     {
         with(new MigrationPublisher(new Migrator($cms, $this->getLaravel())))
-            ->setRepository($this->laravel['modules'])
+            ->setRepository($this->laravel['cmss'])
             ->setConsole($this)
             ->publish();
     }

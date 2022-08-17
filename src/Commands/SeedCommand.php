@@ -68,7 +68,7 @@ class SeedCommand extends Command
      */
     public function getCMSRepository(): RepositoryInterface
     {
-        $cmss = $this->laravel['modules'];
+        $cmss = $this->laravel['cmss'];
         if (!$cmss instanceof RepositoryInterface) {
             throw new RuntimeException('CMS repository not found!');
         }
@@ -165,7 +165,7 @@ class SeedCommand extends Command
     {
         $name = Str::studly($name);
 
-        $namespace = $this->laravel['modules']->config('namespace');
+        $namespace = $this->laravel['cmss']->config('namespace');
         $config = GenerateConfigReader::read('seeder');
         $seederPath = str_replace('/', '\\', $config->getPath());
 
@@ -187,7 +187,7 @@ class SeedCommand extends Command
         $seederPath = str_replace('/', '\\', $seederPath->getPath());
 
         $foundCMSs = [];
-        foreach ($this->laravel['modules']->config('scan.paths') as $path) {
+        foreach ($this->laravel['cmss']->config('scan.paths') as $path) {
             $namespace = array_slice(explode('/', $path), -1)[0];
             $foundCMSs[] = $namespace . '\\' . $name . '\\' . $seederPath . '\\' . $name . 'DatabaseSeeder';
         }

@@ -93,7 +93,7 @@ class MigrateRefreshCommand extends Command
             return null;
         }
 
-        $cms = app('modules')->find($cms);
+        $cms = app('cmss')->find($cms);
 
         return $cms ? $cms->getStudlyName() : null;
     }

@@ -51,7 +51,7 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub('/factory.stub', [
             'NAMESPACE' => $this->getClassNamespace($cms),
@@ -65,7 +65,7 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $factoryPath = GenerateConfigReader::read('factory');
 
@@ -95,7 +95,7 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.factory.namespace') ?: $cms->config('paths.generator.factory.path');
     }
@@ -107,6 +107,6 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     public function getModelNamespace(): string
     {
-        return $this->laravel['modules']->config('namespace') . '\\' . $this->laravel['modules']->findOrFail($this->getCMSName()) . '\\' . $this->laravel['modules']->config('paths.generator.model.path', 'Entities');
+        return $this->laravel['cmss']->config('namespace') . '\\' . $this->laravel['cmss']->findOrFail($this->getCMSName()) . '\\' . $this->laravel['cmss']->config('paths.generator.model.path', 'Entities');
     }
 }

@@ -25,7 +25,7 @@ class UnUseCommand extends Command
      */
     public function handle(): int
     {
-        $this->laravel['modules']->forgetUsed();
+        $this->laravel['cmss']->forgetUsed();
 
         $this->info('Previous module used successfully forgotten.');
 

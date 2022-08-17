@@ -334,7 +334,7 @@ class CMSGenerator extends Generator
             $path = $this->cms->getCMSPath($this->getName()) . '/' . $folder->getPath();
 
             $this->filesystem->makeDirectory($path, 0755, true);
-            if (config('modules.stubs.gitkeep')) {
+            if (config('cmss.stubs.gitkeep')) {
                 $this->generateGitKeep($path);
             }
         }
@@ -465,7 +465,7 @@ class CMSGenerator extends Generator
      */
     private function generateCMSJsonFile()
     {
-        $path = $this->cms->getCMSPath($this->getName()) . 'module.json';
+        $path = $this->cms->getCMSPath($this->getName()) . 'cms.json';
 
         if (!$this->filesystem->isDirectory($dir = dirname($path))) {
             $this->filesystem->makeDirectory($dir, 0775, true);
@@ -482,7 +482,7 @@ class CMSGenerator extends Generator
      */
     private function cleanCMSJsonFile()
     {
-        $path = $this->cms->getCMSPath($this->getName()) . 'module.json';
+        $path = $this->cms->getCMSPath($this->getName()) . 'cms.json';
 
         $content = $this->filesystem->get($path);
         $namespace = $this->getCMSNamespaceReplacement();

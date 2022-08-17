@@ -35,7 +35,7 @@ class DisableCommand extends Command
         }
 
         /** @var CMS $cms */
-        $cms = $this->laravel['modules']->findOrFail($this->argument('cms'));
+        $cms = $this->laravel['cmss']->findOrFail($this->argument('cms'));
 
         if ($cms->isEnabled()) {
             $cms->disable();
@@ -56,7 +56,7 @@ class DisableCommand extends Command
     public function disableAll()
     {
         /** @var CMSs $cmss */
-        $cmss = $this->laravel['modules']->all();
+        $cmss = $this->laravel['cmss']->all();
 
         foreach ($cmss as $cms) {
             if ($cms->isEnabled()) {

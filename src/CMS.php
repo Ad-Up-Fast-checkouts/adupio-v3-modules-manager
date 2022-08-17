@@ -183,7 +183,7 @@ abstract class CMS
      */
     public function boot(): void
     {
-        if (config('modules.register.translations', true) === true) {
+        if (config('cmss.register.translations', true) === true) {
             $this->registerTranslation();
         }
 
@@ -220,7 +220,7 @@ abstract class CMS
     public function json($file = null): Json
     {
         if ($file === null) {
-            $file = 'module.json';
+            $file = 'cms.json';
         }
 
         return Arr::get($this->cmsJson, $file, function () use ($file) {
@@ -277,7 +277,7 @@ abstract class CMS
      */
     protected function fireEvent($event): void
     {
-        $this->app['events']->dispatch(sprintf('modules.%s.' . $event, $this->getLowerName()), [$this]);
+        $this->app['events']->dispatch(sprintf('cmss.%s.' . $event, $this->getLowerName()), [$this]);
     }
     /**
      * Register the aliases from this module.
@@ -290,7 +290,7 @@ abstract class CMS
     abstract public function registerProviders(): void;
 
     /**
-     * Get the path to the cached *_module.php file.
+     * Get the path to the cached *_cms.php file.
      *
      * @return string
      */
@@ -417,14 +417,14 @@ abstract class CMS
      */
     protected function isLoadFilesOnBoot(): bool
     {
-        return config('modules.register.files', 'register') === 'boot' &&
+        return config('cmss.register.files', 'register') === 'boot' &&
             // force register method if option == boot && app is AsgardCms
             !class_exists('\CMSs\Core\Foundation\AsgardCms');
     }
 
     private function flushCache(): void
     {
-        if (config('modules.cache.enabled')) {
+        if (config('cmss.cache.enabled')) {
             $this->cache->store()->flush();
         }
     }

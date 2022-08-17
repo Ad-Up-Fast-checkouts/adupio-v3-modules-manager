@@ -126,7 +126,7 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $cms = $this->laravel['modules']->findOrFail($this->getCMSName());
+        $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub('/model.stub', [
             'NAME'              => $this->getModelName(),
@@ -136,7 +136,7 @@ class ModelMakeCommand extends GeneratorCommand
             'LOWER_NAME'        => $cms->getLowerName(),
             'MODULE'            => $this->getCMSName(),
             'STUDLY_NAME'       => $cms->getStudlyName(),
-            'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
+            'MODULE_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
         ]))->render();
     }
 
@@ -145,7 +145,7 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
+        $path = $this->laravel['cmss']->getCMSPath($this->getCMSName());
 
         $modelPath = GenerateConfigReader::read('model');
 
@@ -183,7 +183,7 @@ class ModelMakeCommand extends GeneratorCommand
      */
     public function getDefaultNamespace(): string
     {
-        $cms = $this->laravel['modules'];
+        $cms = $this->laravel['cmss'];
 
         return $cms->config('paths.generator.model.namespace') ?: $cms->config('paths.generator.model.path', 'Entities');
     }
