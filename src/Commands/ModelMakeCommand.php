@@ -25,7 +25,7 @@ class ModelMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'module:make-model';
+    protected $name = 'cms:make-model';
 
     /**
      * The console command description.
@@ -102,7 +102,7 @@ class ModelMakeCommand extends GeneratorCommand
     {
         if ($this->option('migration') === true) {
             $migrationName = 'create_' . $this->createMigrationName() . '_table';
-            $this->call('module:make-migration', ['name' => $migrationName, 'cms' => $this->argument('cms')]);
+            $this->call('cms:make-migration', ['name' => $migrationName, 'cms' => $this->argument('cms')]);
         }
     }
 
@@ -114,7 +114,7 @@ class ModelMakeCommand extends GeneratorCommand
         if ($this->option('controller') === true) {
             $controllerName = "{$this->getModelName()}Controller";
 
-            $this->call('module:make-controller', array_filter([
+            $this->call('cms:make-controller', array_filter([
                 'controller' => $controllerName,
                 'cms' => $this->argument('cms'),
             ]));
@@ -134,9 +134,9 @@ class ModelMakeCommand extends GeneratorCommand
             'NAMESPACE'         => $this->getClassNamespace($cms),
             'CLASS'             => $this->getClass(),
             'LOWER_NAME'        => $cms->getLowerName(),
-            'MODULE'            => $this->getCMSName(),
+            'CMS'            => $this->getCMSName(),
             'STUDLY_NAME'       => $cms->getStudlyName(),
-            'MODULE_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
+            'CMS_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
         ]))->render();
     }
 

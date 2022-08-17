@@ -1,7 +1,7 @@
 <?php
 
 if (! function_exists('module_path')) {
-    function module_path($name, $path = '')
+    function cms_path($name, $path = '')
     {
         $cms = app('cmss')->find($name);
 

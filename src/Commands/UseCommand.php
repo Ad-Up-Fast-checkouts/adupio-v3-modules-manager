@@ -13,7 +13,7 @@ class UseCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:use';
+    protected $name = 'cms:use';
 
     /**
      * The console command description.

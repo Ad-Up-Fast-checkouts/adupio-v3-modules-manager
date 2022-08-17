@@ -10,7 +10,7 @@ use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 
 class LaravelCMSsV6Migrator extends Command
 {
-    protected $name = 'module:v6:migrate';
+    protected $name = 'cms:v6:migrate';
     protected $description = 'Migrate laravel-modules v5 modules statuses to v6.';
 
     public function handle(): int

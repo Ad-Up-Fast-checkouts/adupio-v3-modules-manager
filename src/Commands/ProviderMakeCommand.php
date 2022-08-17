@@ -26,7 +26,7 @@ class ProviderMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'module:make-provider';
+    protected $name = 'cms:make-provider';
 
     /**
      * The console command description.
@@ -81,10 +81,10 @@ class ProviderMakeCommand extends GeneratorCommand
             'NAMESPACE'         => $this->getClassNamespace($cms),
             'CLASS'             => $this->getClass(),
             'LOWER_NAME'        => $cms->getLowerName(),
-            'MODULE'            => $this->getCMSName(),
+            'CMS'            => $this->getCMSName(),
             'NAME'              => $this->getFileName(),
             'STUDLY_NAME'       => $cms->getStudlyName(),
-            'MODULE_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
+            'CMS_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
             'PATH_VIEWS'        => GenerateConfigReader::read('views')->getPath(),
             'PATH_LANG'         => GenerateConfigReader::read('lang')->getPath(),
             'PATH_CONFIG'       => GenerateConfigReader::read('config')->getPath(),

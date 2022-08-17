@@ -374,7 +374,7 @@ class CMSGenerator extends Generator
     public function generateResources()
     {
         if (GenerateConfigReader::read('seeder')->generate() === true) {
-            $this->console->call('module:make-seed', [
+            $this->console->call('cms:make-seed', [
                 'name' => $this->getName(),
                 'cms' => $this->getName(),
                 '--master' => true,
@@ -382,19 +382,19 @@ class CMSGenerator extends Generator
         }
 
         if (GenerateConfigReader::read('provider')->generate() === true) {
-            $this->console->call('module:make-provider', [
+            $this->console->call('cms:make-provider', [
                 'name' => $this->getName() . 'ServiceProvider',
                 'cms' => $this->getName(),
                 '--master' => true,
             ]);
-            $this->console->call('module:route-provider', [
+            $this->console->call('cms:route-provider', [
                 'cms' => $this->getName(),
             ]);
         }
 
         if (GenerateConfigReader::read('controller')->generate() === true) {
             $options = $this->type=='api' ? ['--api'=>true] : [];
-            $this->console->call('module:make-controller', [
+            $this->console->call('cms:make-controller', [
                 'controller' => $this->getName() . 'Controller',
                 'cms' => $this->getName(),
             ]+$options);
@@ -478,7 +478,7 @@ class CMSGenerator extends Generator
 
     /**
      * Remove the default service provider that was added in the module.json file
-     * This is needed when a --plain module was created
+     * This is needed when a --plain cms was created
      */
     private function cleanCMSJsonFile()
     {
@@ -526,7 +526,7 @@ class CMSGenerator extends Generator
     }
 
     /**
-     * Get replacement for $MODULE_NAMESPACE$.
+     * Get replacement for $CMS_NAMESPACE$.
      *
      * @return string
      */

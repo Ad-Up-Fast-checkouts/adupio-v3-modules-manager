@@ -14,7 +14,7 @@ class PublishMigrationCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:publish-migration';
+    protected $name = 'cms:publish-migration';
 
     /**
      * The console command description.

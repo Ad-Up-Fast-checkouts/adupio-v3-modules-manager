@@ -19,7 +19,7 @@ class RouteProviderMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'module:route-provider';
+    protected $name = 'cms:route-provider';
 
     /**
      * The command description.
@@ -59,8 +59,8 @@ class RouteProviderMakeCommand extends GeneratorCommand
         return (new Stub('/route-provider.stub', [
             'NAMESPACE'            => $this->getClassNamespace($cms),
             'CLASS'                => $this->getFileName(),
-            'MODULE_NAMESPACE'     => $this->laravel['cmss']->config('namespace'),
-            'MODULE'               => $this->getCMSName(),
+            'CMS_NAMESPACE'     => $this->laravel['cmss']->config('namespace'),
+            'CMS'               => $this->getCMSName(),
             'CONTROLLER_NAMESPACE' => $this->getControllerNameSpace(),
             'WEB_ROUTES_PATH'      => $this->getWebRoutesPath(),
             'API_ROUTES_PATH'      => $this->getApiRoutesPath(),

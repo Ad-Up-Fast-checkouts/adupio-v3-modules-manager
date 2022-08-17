@@ -237,7 +237,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
     }
 
     /**
-     * Determine whether the given module exist.
+     * Determine whether the given cms exist.
      *
      * @param $name
      *

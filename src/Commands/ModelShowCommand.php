@@ -13,7 +13,7 @@ class ModelShowCommand extends ShowModelCommand
      *
      * @var string
      */
-    protected $name = 'module:model-show';
+    protected $name = 'cms:model-show';
 
     /**
      * The name of the console command.
@@ -24,21 +24,21 @@ class ModelShowCommand extends ShowModelCommand
      *
      * @deprecated
      */
-    protected static $defaultName = 'module:model-show';
+    protected static $defaultName = 'cms:model-show';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Show information about an Eloquent model in modules';
+    protected $description = 'Show information about an Eloquent model in cmss';
 
     /**
      * The console command signature.
      *
      * @var string
      */
-    protected $signature = 'module:model-show {model : The model to show}
+    protected $signature = 'cms:model-show {model : The model to show}
                 {--database= : The database connection to use}
                 {--json : Output the model as JSON}';
 

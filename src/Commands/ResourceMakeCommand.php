@@ -14,7 +14,7 @@ class ResourceMakeCommand extends GeneratorCommand
     use CMSCommandTrait;
 
     protected $argumentName = 'name';
-    protected $name = 'module:make-resource';
+    protected $name = 'cms:make-resource';
     protected $description = 'Create a new resource class for the specified module.';
 
     public function getDefaultNamespace(): string

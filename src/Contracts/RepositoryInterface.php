@@ -162,7 +162,7 @@ interface RepositoryInterface
     public function delete(string $cms): bool;
 
     /**
-     * Determine whether the given module is activated.
+     * Determine whether the given cms is activated.
      * @param string $name
      * @return bool
      * @throws CMSNotFoundException
@@ -170,7 +170,7 @@ interface RepositoryInterface
     public function isEnabled(string $name): bool;
 
     /**
-     * Determine whether the given module is not activated.
+     * Determine whether the given cms is not activated.
      * @param string $name
      * @return bool
      * @throws CMSNotFoundException

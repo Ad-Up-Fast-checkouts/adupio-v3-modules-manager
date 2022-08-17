@@ -22,7 +22,7 @@ class SeedMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'module:make-seed';
+    protected $name = 'cms:make-seed';
 
     /**
      * The console command description.
@@ -70,7 +70,7 @@ class SeedMakeCommand extends GeneratorCommand
 
         return (new Stub('/seeder.stub', [
             'NAME' => $this->getSeederName(),
-            'MODULE' => $this->getCMSName(),
+            'CMS' => $this->getCMSName(),
             'NAMESPACE' => $this->getClassNamespace($cms),
 
         ]))->render();

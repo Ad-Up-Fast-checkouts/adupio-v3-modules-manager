@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class CMSDeleteCommand extends Command
 {
-    protected $name = 'module:delete';
+    protected $name = 'cms:delete';
     protected $description = 'Delete a module from the application';
 
     public function handle(): int

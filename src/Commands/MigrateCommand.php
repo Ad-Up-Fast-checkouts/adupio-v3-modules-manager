@@ -15,7 +15,7 @@ class MigrateCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:migrate';
+    protected $name = 'cms:migrate';
 
     /**
      * The console command description.
@@ -78,7 +78,7 @@ class MigrateCommand extends Command
         ]);
 
         if ($this->option('seed')) {
-            $this->call('module:seed', ['cms' => $cms->getName(), '--force' => $this->option('force')]);
+            $this->call('cms:seed', ['cms' => $cms->getName(), '--force' => $this->option('force')]);
         }
     }
 

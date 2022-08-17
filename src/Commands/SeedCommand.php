@@ -23,7 +23,7 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:seed';
+    protected $name = 'cms:seed';
 
     /**
      * The console command description.
@@ -98,7 +98,7 @@ class SeedCommand extends Command
      *
      * @return void
      */
-    public function moduleSeed(CMS $cms)
+    public function cmsSeed(CMS $cms)
     {
         $seeders = [];
         $name = $cms->getName();

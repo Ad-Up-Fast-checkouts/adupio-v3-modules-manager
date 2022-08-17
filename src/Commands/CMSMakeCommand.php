@@ -15,7 +15,7 @@ class CMSMakeCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:make';
+    protected $name = 'cms:make';
 
     /**
      * The console command description.
@@ -67,7 +67,7 @@ class CMSMakeCommand extends Command
     protected function getOptions()
     {
         return [
-            ['plain', 'p', InputOption::VALUE_NONE, 'Generate a plain module (without some resources).'],
+            ['plain', 'p', InputOption::VALUE_NONE, 'Generate a plain cms (without some resources).'],
             ['api', null, InputOption::VALUE_NONE, 'Generate an api module.'],
             ['web', null, InputOption::VALUE_NONE, 'Generate a web module.'],
             ['disabled', 'd', InputOption::VALUE_NONE, 'Do not enable the module at creation.'],

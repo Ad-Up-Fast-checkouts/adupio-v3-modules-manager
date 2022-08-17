@@ -25,7 +25,7 @@ class ControllerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'module:make-controller';
+    protected $name = 'cms:make-controller';
 
     /**
      * The console command description.
@@ -56,16 +56,16 @@ class ControllerMakeCommand extends GeneratorCommand
         $cms = $this->laravel['cmss']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
-            'MODULENAME'        => $cms->getStudlyName(),
+            'CMSNAME'        => $cms->getStudlyName(),
             'CONTROLLERNAME'    => $this->getControllerName(),
             'NAMESPACE'         => $cms->getStudlyName(),
             'CLASS_NAMESPACE'   => $this->getClassNamespace($cms),
             'CLASS'             => $this->getControllerNameWithoutNamespace(),
             'LOWER_NAME'        => $cms->getLowerName(),
-            'MODULE'            => $this->getCMSName(),
+            'CMS'            => $this->getCMSName(),
             'NAME'              => $this->getCMSName(),
             'STUDLY_NAME'       => $cms->getStudlyName(),
-            'MODULE_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
+            'CMS_NAMESPACE'  => $this->laravel['cmss']->config('namespace'),
         ]))->render();
     }
 

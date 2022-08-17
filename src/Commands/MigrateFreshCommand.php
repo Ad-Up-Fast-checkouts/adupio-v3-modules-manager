@@ -16,7 +16,7 @@ class MigrateFreshCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:migrate-fresh';
+    protected $name = 'cms:migrate-fresh';
 
     /**
      * The console command description.
@@ -40,7 +40,7 @@ class MigrateFreshCommand extends Command
 
         $this->call('migrate:fresh');
 
-        $this->call('module:migrate', [
+        $this->call('cms:migrate', [
             'cms' => $this->getCMSName(),
             '--database' => $this->option('database'),
             '--force' => $this->option('force'),

@@ -13,7 +13,7 @@ class DisableCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:disable';
+    protected $name = 'cms:disable';
 
     /**
      * The console command description.

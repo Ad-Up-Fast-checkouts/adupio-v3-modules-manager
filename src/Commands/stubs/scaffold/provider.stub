@@ -10,7 +10,7 @@ class $CLASS$ extends ServiceProvider
     /**
      * @var string $cmsName
      */
-    protected $cmsName = '$MODULE$';
+    protected $cmsName = '$CMS$';
 
     /**
      * @var string $cmsNameLower
@@ -27,7 +27,7 @@ class $CLASS$ extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
-        $this->loadMigrationsFrom(module_path($this->cmsName, '$MIGRATIONS_PATH$'));
+        $this->loadMigrationsFrom(cms_path($this->cmsName, '$MIGRATIONS_PATH$'));
     }
 
     /**
@@ -48,10 +48,10 @@ class $CLASS$ extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            module_path($this->cmsName, '$PATH_CONFIG$/config.php') => config_path($this->cmsNameLower . '.php'),
+            cms_path($this->cmsName, '$PATH_CONFIG$/config.php') => config_path($this->cmsNameLower . '.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            module_path($this->cmsName, '$PATH_CONFIG$/config.php'), $this->cmsNameLower
+            cms_path($this->cmsName, '$PATH_CONFIG$/config.php'), $this->cmsNameLower
         );
     }
 
@@ -64,7 +64,7 @@ class $CLASS$ extends ServiceProvider
     {
         $viewPath = resource_path('views/modules/' . $this->cmsNameLower);
 
-        $sourcePath = module_path($this->cmsName, '$PATH_VIEWS$');
+        $sourcePath = cms_path($this->cmsName, '$PATH_VIEWS$');
 
         $this->publishes([
             $sourcePath => $viewPath
@@ -86,8 +86,8 @@ class $CLASS$ extends ServiceProvider
             $this->loadTranslationsFrom($langPath, $this->cmsNameLower);
             $this->loadJsonTranslationsFrom($langPath, $this->cmsNameLower);
         } else {
-            $this->loadTranslationsFrom(module_path($this->cmsName, '$PATH_LANG$'), $this->cmsNameLower);
-            $this->loadJsonTranslationsFrom(module_path($this->cmsName, '$PATH_LANG$'), $this->cmsNameLower);
+            $this->loadTranslationsFrom(cms_path($this->cmsName, '$PATH_LANG$'), $this->cmsNameLower);
+            $this->loadJsonTranslationsFrom(cms_path($this->cmsName, '$PATH_LANG$'), $this->cmsNameLower);
         }
     }
 

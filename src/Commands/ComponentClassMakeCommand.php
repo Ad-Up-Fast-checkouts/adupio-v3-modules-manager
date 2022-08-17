@@ -24,7 +24,7 @@ class ComponentClassMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'module:make-component';
+    protected $name = 'cms:make-component';
 
     /**
      * The console command description.
@@ -49,7 +49,7 @@ class ComponentClassMakeCommand extends GeneratorCommand
      */
     protected function writeComponentViewTemplate()
     {
-        $this->call('module:make-component-view', ['name' => $this->argument('name') , 'cms' => $this->argument('cms')]);
+        $this->call('cms:make-component-view', ['name' => $this->argument('name') , 'cms' => $this->argument('cms')]);
     }
 
     public function getDefaultNamespace(): string

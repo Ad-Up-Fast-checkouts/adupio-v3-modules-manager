@@ -14,7 +14,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $name = 'module:publish';
+    protected $name = 'cms:publish';
 
     /**
      * The console command description.
