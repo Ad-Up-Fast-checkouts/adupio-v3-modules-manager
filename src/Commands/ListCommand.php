@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
 use Symfony\Component\Console\Input\InputOption;
 
 class ListCommand extends Command

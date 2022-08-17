@@ -1,10 +1,10 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Migrations\Migrator;
-use Nwidart\Modules\Traits\MigrationLoaderTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Migrations\Migrator;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\MigrationLoaderTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -27,7 +27,7 @@ class MigrateRollbackCommand extends Command
     protected $description = 'Rollback the modules migrations.';
 
     /**
-     * @var \Nwidart\Modules\Contracts\RepositoryInterface
+     * @var \AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface
      */
     protected $module;
 

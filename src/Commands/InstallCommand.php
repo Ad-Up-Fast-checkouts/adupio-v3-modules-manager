@@ -1,10 +1,10 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Json;
-use Nwidart\Modules\Process\Installer;
+use AdUpFastcheckouts\adupiov3modulesmanager\Json;
+use AdUpFastcheckouts\adupiov3modulesmanager\Process\Installer;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

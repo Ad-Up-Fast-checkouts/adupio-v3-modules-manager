@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Modules;
+namespace AdUpFastcheckouts\adupiov3modulesmanager;
 
 use Illuminate\Filesystem\Filesystem;
-use Nwidart\Modules\Exceptions\InvalidJsonException;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\InvalidJsonException;
 
 class Json
 {

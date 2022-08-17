@@ -1,15 +1,15 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use ErrorException;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Str;
-use Nwidart\Modules\Contracts\RepositoryInterface;
-use Nwidart\Modules\Module;
-use Nwidart\Modules\Support\Config\GenerateConfigReader;
-use Nwidart\Modules\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
 use RuntimeException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Modules\Providers;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Nwidart\Modules\Commands;
+use AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 class ConsoleServiceProvider extends ServiceProvider
 {

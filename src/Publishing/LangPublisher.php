@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Modules\Publishing;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Publishing;
 
-use Nwidart\Modules\Support\Config\GenerateConfigReader;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 
 class LangPublisher extends Publisher
 {

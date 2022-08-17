@@ -1,10 +1,10 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Contracts\ActivatorInterface;
-use Nwidart\Modules\Generators\ModuleGenerator;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\ActivatorInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Generators\ModuleGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 

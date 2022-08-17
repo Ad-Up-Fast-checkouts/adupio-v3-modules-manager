@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Modules\Contracts;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Contracts;
 
-use Nwidart\Modules\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
 
 interface ActivatorInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Modules\Generators;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Generators;
 
 use Illuminate\Filesystem\Filesystem;
-use Nwidart\Modules\Exceptions\FileAlreadyExistException;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\FileAlreadyExistException;
 
 class FileGenerator extends Generator
 {

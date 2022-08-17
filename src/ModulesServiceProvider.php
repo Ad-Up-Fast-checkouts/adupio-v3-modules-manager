@@ -1,11 +1,11 @@
 <?php
 
-namespace Nwidart\Modules;
+namespace AdUpFastcheckouts\adupiov3modulesmanager;
 
 use Illuminate\Support\ServiceProvider;
-use Nwidart\Modules\Providers\BootstrapServiceProvider;
-use Nwidart\Modules\Providers\ConsoleServiceProvider;
-use Nwidart\Modules\Providers\ContractsServiceProvider;
+use AdUpFastcheckouts\adupiov3modulesmanager\Providers\BootstrapServiceProvider;
+use AdUpFastcheckouts\adupiov3modulesmanager\Providers\ConsoleServiceProvider;
+use AdUpFastcheckouts\adupiov3modulesmanager\Providers\ContractsServiceProvider;
 
 abstract class ModulesServiceProvider extends ServiceProvider
 {

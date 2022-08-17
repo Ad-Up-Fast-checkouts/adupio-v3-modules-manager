@@ -1,15 +1,15 @@
 <?php
 
-namespace Nwidart\Modules\Generators;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Generators;
 
 use Illuminate\Config\Repository as Config;
 use Illuminate\Console\Command as Console;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Nwidart\Modules\Contracts\ActivatorInterface;
-use Nwidart\Modules\FileRepository;
-use Nwidart\Modules\Support\Config\GenerateConfigReader;
-use Nwidart\Modules\Support\Stub;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\ActivatorInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\FileRepository;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
 
 class ModuleGenerator extends Generator
 {
@@ -51,7 +51,7 @@ class ModuleGenerator extends Generator
     /**
      * The module instance.
      *
-     * @var \Nwidart\Modules\Module
+     * @var \AdUpFastcheckouts\adupiov3modulesmanager\Module
      */
     protected $module;
 
@@ -227,7 +227,7 @@ class ModuleGenerator extends Generator
     /**
      * Get the module instance.
      *
-     * @return \Nwidart\Modules\Module
+     * @return \AdUpFastcheckouts\adupiov3modulesmanager\Module
      */
     public function getModule()
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Modules\Process;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Process;
 
-use Nwidart\Modules\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
 
 class Updater extends Runner
 {

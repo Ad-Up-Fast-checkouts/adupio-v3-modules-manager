@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Generators;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Generators;
 
 abstract class Generator
 {

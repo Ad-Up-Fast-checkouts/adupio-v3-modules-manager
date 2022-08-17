@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Modules\Laravel;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Laravel;
 
-use Nwidart\Modules\FileRepository;
+use AdUpFastcheckouts\adupiov3modulesmanager\FileRepository;
 
 class LaravelFileRepository extends FileRepository
 {

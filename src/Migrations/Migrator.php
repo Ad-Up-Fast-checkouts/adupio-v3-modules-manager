@@ -1,12 +1,12 @@
 <?php
 
-namespace Nwidart\Modules\Migrations;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Migrations;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Nwidart\Modules\Module;
-use Nwidart\Modules\Support\Config\GenerateConfigReader;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 
 class Migrator
 {

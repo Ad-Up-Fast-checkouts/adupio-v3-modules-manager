@@ -1,12 +1,12 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager;
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Str;
-use Nwidart\Modules\Support\Config\GenerateConfigReader;
-use Nwidart\Modules\Support\Stub;
-use Nwidart\Modules\Traits\ModuleCommandTrait;
+use NAdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
+use NAdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 
 class ComponentViewMakeCommand extends GeneratorCommand

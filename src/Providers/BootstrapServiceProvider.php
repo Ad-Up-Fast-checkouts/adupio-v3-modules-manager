@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Modules\Providers;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Nwidart\Modules\Contracts\RepositoryInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
 
 class BootstrapServiceProvider extends ServiceProvider
 {

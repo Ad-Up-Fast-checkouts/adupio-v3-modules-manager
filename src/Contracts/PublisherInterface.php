@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Contracts;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Contracts;
 
 interface PublisherInterface
 {

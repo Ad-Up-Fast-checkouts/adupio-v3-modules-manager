@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Routing;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Routing;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

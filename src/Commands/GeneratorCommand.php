@@ -1,10 +1,10 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Exceptions\FileAlreadyExistException;
-use Nwidart\Modules\Generators\FileGenerator;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\FileAlreadyExistException;
+use AdUpFastcheckouts\adupiov3modulesmanager\Generators\FileGenerator;
 
 abstract class GeneratorCommand extends Command
 {
@@ -79,7 +79,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Get class namespace.
      *
-     * @param \Nwidart\Modules\Module $module
+     * @param \AdUpFastcheckouts\adupiov3modulesmanager\Module $module
      *
      * @return string
      */

@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Modules\Contracts;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Contracts;
 
-use Nwidart\Modules\Exceptions\ModuleNotFoundException;
-use Nwidart\Modules\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
 
 interface RepositoryInterface
 {
@@ -31,7 +31,7 @@ interface RepositoryInterface
     /**
      * Get modules as modules collection instance.
      *
-     * @return \Nwidart\Modules\Collection
+     * @return \AdUpFastcheckouts\adupiov3modulesmanager\Collection
      */
     public function toCollection();
 
@@ -157,7 +157,7 @@ interface RepositoryInterface
      * Delete a specific module.
      * @param string $module
      * @return bool
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
      */
     public function delete(string $module): bool;
 

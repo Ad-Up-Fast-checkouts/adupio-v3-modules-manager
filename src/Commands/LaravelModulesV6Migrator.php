@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Contracts\RepositoryInterface;
-use Nwidart\Modules\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
 
 class LaravelModulesV6Migrator extends Command
 {

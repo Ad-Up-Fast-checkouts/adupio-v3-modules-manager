@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Facades;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

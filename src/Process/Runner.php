@@ -1,9 +1,9 @@
 <?php
 
-namespace Nwidart\Modules\Process;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Process;
 
-use Nwidart\Modules\Contracts\RepositoryInterface;
-use Nwidart\Modules\Contracts\RunableInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RunableInterface;
 
 class Runner implements RunableInterface
 {

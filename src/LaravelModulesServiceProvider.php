@@ -1,10 +1,10 @@
 <?php
 
-namespace Nwidart\Modules;
+namespace AdUpFastcheckouts\adupiov3modulesmanager;
 
-use Nwidart\Modules\Contracts\RepositoryInterface;
-use Nwidart\Modules\Exceptions\InvalidActivatorClass;
-use Nwidart\Modules\Support\Stub;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\InvalidActivatorClass;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
 
 class LaravelModulesServiceProvider extends ModulesServiceProvider
 {

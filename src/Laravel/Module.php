@@ -1,12 +1,12 @@
 <?php
 
-namespace Nwidart\Modules\Laravel;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Laravel;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\ProviderRepository;
 use Illuminate\Support\Str;
-use Nwidart\Modules\Module as BaseModule;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module as BaseModule;
 
 class Module extends BaseModule
 {

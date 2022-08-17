@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Traits;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Traits;
 
 trait MigrationLoaderTrait
 {

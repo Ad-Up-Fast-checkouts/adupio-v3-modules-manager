@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Modules\Lumen;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Lumen;
 
-use Nwidart\Modules\FileRepository;
+use AdUpFastcheckouts\adupiov3modulesmanager\FileRepository;
 
 class LumenFileRepository extends FileRepository
 {

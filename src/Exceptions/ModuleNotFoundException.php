@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Exceptions;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Exceptions;
 
 class ModuleNotFoundException extends \Exception
 {

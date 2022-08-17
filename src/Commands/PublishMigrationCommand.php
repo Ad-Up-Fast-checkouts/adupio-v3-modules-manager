@@ -1,10 +1,10 @@
 <?php
 
-namespace Nwidart\Modules\Commands;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Migrations\Migrator;
-use Nwidart\Modules\Publishing\MigrationPublisher;
+use AdUpFastcheckouts\adupiov3modulesmanager\Migrations\Migrator;
+use AdUpFastcheckouts\adupiov3modulesmanager\Publishing\MigrationPublisher;
 use Symfony\Component\Console\Input\InputArgument;
 
 class PublishMigrationCommand extends Command
@@ -46,7 +46,7 @@ class PublishMigrationCommand extends Command
     /**
      * Publish migration for the specified module.
      *
-     * @param \Nwidart\Modules\Module $module
+     * @param \AdUpFastcheckouts\adupiov3modulesmanager\Module $module
      */
     public function publish($module)
     {

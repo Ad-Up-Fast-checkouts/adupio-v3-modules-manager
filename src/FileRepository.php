@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules;
+namespace AdUpFastcheckouts\adupiov3modulesmanager;
 
 use Countable;
 use Illuminate\Cache\CacheManager;
@@ -10,11 +10,11 @@ use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use Nwidart\Modules\Contracts\RepositoryInterface;
-use Nwidart\Modules\Exceptions\InvalidAssetPath;
-use Nwidart\Modules\Exceptions\ModuleNotFoundException;
-use Nwidart\Modules\Process\Installer;
-use Nwidart\Modules\Process\Updater;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\InvalidAssetPath;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException;
+use AdUpFastcheckouts\adupiov3modulesmanager\Process\Installer;
+use AdUpFastcheckouts\adupiov3modulesmanager\Process\Updater;
 
 abstract class FileRepository implements RepositoryInterface, Countable
 {
@@ -129,7 +129,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      * @param Container $app
      * @param string $args
      * @param string $path
-     * @return \Nwidart\Modules\Module
+     * @return \AdUpFastcheckouts\adupiov3modulesmanager\Module
      */
     abstract protected function createModule(...$args);
 
@@ -487,7 +487,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
     /**
      * Get module used for cli session.
      * @return string
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
      */
     public function getUsedNow(): string
     {
@@ -554,7 +554,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      * Enabling a specific module.
      * @param string $name
      * @return void
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
      */
     public function enable($name)
     {
@@ -565,7 +565,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      * Disabling a specific module.
      * @param string $name
      * @return void
-     * @throws \Nwidart\Modules\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
      */
     public function disable($name)
     {

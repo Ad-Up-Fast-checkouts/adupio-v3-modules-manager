@@ -1,11 +1,11 @@
 <?php
 
-namespace Nwidart\Modules\Publishing;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Publishing;
 
 use Illuminate\Console\Command;
-use Nwidart\Modules\Contracts\PublisherInterface;
-use Nwidart\Modules\Contracts\RepositoryInterface;
-use Nwidart\Modules\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\PublisherInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
+use AdUpFastcheckouts\adupiov3modulesmanager\Module;
 
 abstract class Publisher implements PublisherInterface
 {
@@ -87,7 +87,7 @@ abstract class Publisher implements PublisherInterface
     /**
      * Get module instance.
      *
-     * @return \Nwidart\Modules\Module
+     * @return \AdUpFastcheckouts\adupiov3modulesmanager\Module
      */
     public function getModule()
     {

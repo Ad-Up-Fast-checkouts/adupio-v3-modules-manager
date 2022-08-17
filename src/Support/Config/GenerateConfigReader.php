@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Support\Config;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Support\Config;
 
 class GenerateConfigReader
 {

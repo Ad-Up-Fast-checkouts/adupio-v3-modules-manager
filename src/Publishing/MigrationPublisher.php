@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Modules\Publishing;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Publishing;
 
-use Nwidart\Modules\Migrations\Migrator;
+use AdUpFastcheckouts\adupiov3modulesmanager\Migrations\Migrator;
 
 class MigrationPublisher extends AssetPublisher
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nwidart\Modules\Support\Migrations;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Support\Migrations;
 
 class NameParser
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Nwidart\Modules;
+namespace AdUpFastcheckouts\adupiov3modulesmanager;
 
-use Nwidart\Modules\Support\Stub;
+use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
 
 class LumenModulesServiceProvider extends ModulesServiceProvider
 {
