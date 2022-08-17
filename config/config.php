@@ -44,7 +44,7 @@ return [
             'routes/web' => ['LOWER_NAME', 'STUDLY_NAME'],
             'routes/api' => ['LOWER_NAME'],
             'webpack' => ['LOWER_NAME'],
-            'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE', 'PROVIDER_NAMESPACE'],
+            'json' => ['LOWER_NAME', 'STUDLY_NAME', 'CMS_NAMESPACE', 'PROVIDER_NAMESPACE'],
             'views/index' => ['LOWER_NAME'],
             'views/master' => ['LOWER_NAME', 'STUDLY_NAME'],
             'scaffold/config' => ['STUDLY_NAME'],
@@ -54,7 +54,7 @@ return [
                 'VENDOR',
                 'AUTHOR_NAME',
                 'AUTHOR_EMAIL',
-                'MODULE_NAMESPACE',
+                'CMS_NAMESPACE',
                 'PROVIDER_NAMESPACE',
             ],
         ],
@@ -87,7 +87,7 @@ return [
         | The migrations path
         |--------------------------------------------------------------------------
         |
-        | Where you run 'module:publish-migration' command, where do you publish the
+        | Where you run 'cms:publish-migration' command, where do you publish the
         | the migration files?
         |
         */
