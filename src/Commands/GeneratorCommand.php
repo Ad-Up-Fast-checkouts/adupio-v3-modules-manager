@@ -79,7 +79,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Get class namespace.
      *
-     * @param \AdUpFastcheckouts\adupiov3modulesmanager\Module $module
+     * @param \AdUpFastcheckouts\adupiov3modulesmanager\CMS $module
      *
      * @return string
      */

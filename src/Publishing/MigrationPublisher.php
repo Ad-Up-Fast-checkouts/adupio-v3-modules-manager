@@ -18,7 +18,7 @@ class MigrationPublisher extends AssetPublisher
     public function __construct(Migrator $migrator)
     {
         $this->migrator = $migrator;
-        parent::__construct($migrator->getModule());
+        parent::__construct($migrator->getCMS());
     }
 
     /**

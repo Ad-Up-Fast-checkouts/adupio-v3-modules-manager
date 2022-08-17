@@ -2,41 +2,41 @@
 
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Contracts;
 
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 
 interface ActivatorInterface
 {
     /**
      * Enables a module
      *
-     * @param Module $module
+     * @param CMS $module
      */
-    public function enable(Module $module): void;
+    public function enable(CMS $module): void;
 
     /**
      * Disables a module
      *
-     * @param Module $module
+     * @param CMS $module
      */
-    public function disable(Module $module): void;
+    public function disable(CMS $module): void;
 
     /**
      * Determine whether the given status same with a module status.
      *
-     * @param Module $module
+     * @param CMS $module
      * @param bool $status
      *
      * @return bool
      */
-    public function hasStatus(Module $module, bool $status): bool;
+    public function hasStatus(CMS $module, bool $status): bool;
 
     /**
      * Set active state for a module.
      *
-     * @param Module $module
+     * @param CMS $module
      * @param bool $active
      */
-    public function setActive(Module $module, bool $active): void;
+    public function setActive(CMS $module, bool $active): void;
 
     /**
      * Sets a module status by its name
@@ -49,9 +49,9 @@ interface ActivatorInterface
     /**
      * Deletes a module activation status
      *
-     * @param  Module $module
+     * @param  CMS $module
      */
-    public function delete(Module $module): void;
+    public function delete(CMS $module): void;
 
     /**
      * Deletes any module activation statuses created by this class.

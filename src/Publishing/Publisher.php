@@ -5,7 +5,7 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Publishing;
 use Illuminate\Console\Command;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\PublisherInterface;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 
 abstract class Publisher implements PublisherInterface
 {
@@ -53,9 +53,9 @@ abstract class Publisher implements PublisherInterface
     /**
      * The constructor.
      *
-     * @param Module $module
+     * @param CMS $module
      */
-    public function __construct(Module $module)
+    public function __construct(CMS $module)
     {
         $this->module = $module;
     }
@@ -87,9 +87,9 @@ abstract class Publisher implements PublisherInterface
     /**
      * Get module instance.
      *
-     * @return \AdUpFastcheckouts\adupiov3modulesmanager\Module
+     * @return \AdUpFastcheckouts\adupiov3modulesmanager\CMS
      */
-    public function getModule()
+    public function getCMS()
     {
         return $this->module;
     }

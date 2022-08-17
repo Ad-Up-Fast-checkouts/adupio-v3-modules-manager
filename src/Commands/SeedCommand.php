@@ -7,16 +7,16 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Str;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use RuntimeException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class SeedCommand extends Command
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The console command name.
@@ -40,9 +40,9 @@ class SeedCommand extends Command
         try {
             if ($name = $this->argument('module')) {
                 $name = Str::studly($name);
-                $this->moduleSeed($this->getModuleByName($name));
+                $this->moduleSeed($this->getCMSByName($name));
             } else {
-                $modules = $this->getModuleRepository()->getOrdered();
+                $modules = $this->getCMSRepository()->getOrdered();
                 array_walk($modules, [$this, 'moduleSeed']);
                 $this->info('All modules seeded.');
             }
@@ -66,11 +66,11 @@ class SeedCommand extends Command
      * @throws RuntimeException
      * @return RepositoryInterface
      */
-    public function getModuleRepository(): RepositoryInterface
+    public function getCMSRepository(): RepositoryInterface
     {
         $modules = $this->laravel['modules'];
         if (!$modules instanceof RepositoryInterface) {
-            throw new RuntimeException('Module repository not found!');
+            throw new RuntimeException('CMS repository not found!');
         }
 
         return $modules;
@@ -81,24 +81,24 @@ class SeedCommand extends Command
      *
      * @throws RuntimeException
      *
-     * @return Module
+     * @return CMS
      */
-    public function getModuleByName($name)
+    public function getCMSByName($name)
     {
-        $modules = $this->getModuleRepository();
+        $modules = $this->getCMSRepository();
         if ($modules->has($name) === false) {
-            throw new RuntimeException("Module [$name] does not exists.");
+            throw new RuntimeException("CMS [$name] does not exists.");
         }
 
         return $modules->find($name);
     }
 
     /**
-     * @param Module $module
+     * @param CMS $module
      *
      * @return void
      */
-    public function moduleSeed(Module $module)
+    public function moduleSeed(CMS $module)
     {
         $seeders = [];
         $name = $module->getName();
@@ -126,7 +126,7 @@ class SeedCommand extends Command
 
         if (count($seeders) > 0) {
             array_walk($seeders, [$this, 'dbSeed']);
-            $this->info("Module [$name] seeded.");
+            $this->info("CMS [$name] seeded.");
         }
     }
 
@@ -173,11 +173,11 @@ class SeedCommand extends Command
     }
 
     /**
-     * Get master database seeder name for the specified module under a different namespace than Modules.
+     * Get master database seeder name for the specified module under a different namespace than CMSs.
      *
      * @param string $name
      *
-     * @return array $foundModules array containing namespace paths
+     * @return array $foundCMSs array containing namespace paths
      */
     public function getSeederNames($name)
     {
@@ -186,13 +186,13 @@ class SeedCommand extends Command
         $seederPath = GenerateConfigReader::read('seeder');
         $seederPath = str_replace('/', '\\', $seederPath->getPath());
 
-        $foundModules = [];
+        $foundCMSs = [];
         foreach ($this->laravel['modules']->config('scan.paths') as $path) {
             $namespace = array_slice(explode('/', $path), -1)[0];
-            $foundModules[] = $namespace . '\\' . $name . '\\' . $seederPath . '\\' . $name . 'DatabaseSeeder';
+            $foundCMSs[] = $namespace . '\\' . $name . '\\' . $seederPath . '\\' . $name . 'DatabaseSeeder';
         }
 
-        return $foundModules;
+        return $foundCMSs;
     }
 
     /**

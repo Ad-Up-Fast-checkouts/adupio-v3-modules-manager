@@ -4,13 +4,13 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class RouteProviderMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     protected $argumentName = 'module';
 
@@ -54,13 +54,13 @@ class RouteProviderMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/route-provider.stub', [
             'NAMESPACE'            => $this->getClassNamespace($module),
             'CLASS'                => $this->getFileName(),
             'MODULE_NAMESPACE'     => $this->laravel['modules']->config('namespace'),
-            'MODULE'               => $this->getModuleName(),
+            'MODULE'               => $this->getCMSName(),
             'CONTROLLER_NAMESPACE' => $this->getControllerNameSpace(),
             'WEB_ROUTES_PATH'      => $this->getWebRoutesPath(),
             'API_ROUTES_PATH'      => $this->getApiRoutesPath(),
@@ -83,7 +83,7 @@ class RouteProviderMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $generatorPath = GenerateConfigReader::read('provider');
 

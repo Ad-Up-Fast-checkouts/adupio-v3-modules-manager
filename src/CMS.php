@@ -11,7 +11,7 @@ use Illuminate\Support\Traits\Macroable;
 use Illuminate\Translation\Translator;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\ActivatorInterface;
 
-abstract class Module
+abstract class CMS
 {
     use Macroable;
 
@@ -171,7 +171,7 @@ abstract class Module
      *
      * @return $this
      */
-    public function setPath($path): Module
+    public function setPath($path): CMS
     {
         $this->path = $path;
 
@@ -419,7 +419,7 @@ abstract class Module
     {
         return config('modules.register.files', 'register') === 'boot' &&
             // force register method if option == boot && app is AsgardCms
-            !class_exists('\Modules\Core\Foundation\AsgardCms');
+            !class_exists('\CMSs\Core\Foundation\AsgardCms');
     }
 
     private function flushCache(): void

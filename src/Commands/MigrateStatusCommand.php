@@ -4,7 +4,7 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
 use AdUpFastcheckouts\adupiov3modulesmanager\Migrations\Migrator;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -59,9 +59,9 @@ class MigrateStatusCommand extends Command
     /**
      * Run the migration from the specified module.
      *
-     * @param Module $module
+     * @param CMS $module
      */
-    protected function migrateStatus(Module $module)
+    protected function migrateStatus(CMS $module)
     {
         $path = str_replace(base_path(), '', (new Migrator($module, $this->getLaravel()))->getPath());
 

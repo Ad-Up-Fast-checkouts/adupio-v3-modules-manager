@@ -7,13 +7,13 @@ use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Migrations\NameParser;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Migrations\SchemaParser;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class MigrationMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The console command name.
@@ -112,7 +112,7 @@ class MigrationMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $generatorPath = GenerateConfigReader::read('migration');
 

@@ -3,13 +3,13 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class MigrateFreshCommand extends Command
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The console command name.
@@ -32,8 +32,8 @@ class MigrateFreshCommand extends Command
     {
         $module = $this->argument('module');
 
-        if ($module && !$this->getModuleName()) {
-            $this->error("Module [$module] does not exists.");
+        if ($module && !$this->getCMSName()) {
+            $this->error("CMS [$module] does not exists.");
 
             return E_ERROR;
         }
@@ -41,7 +41,7 @@ class MigrateFreshCommand extends Command
         $this->call('migrate:fresh');
 
         $this->call('module:migrate', [
-            'module' => $this->getModuleName(),
+            'module' => $this->getCMSName(),
             '--database' => $this->option('database'),
             '--force' => $this->option('force'),
             '--seed' => $this->option('seed'),
@@ -76,7 +76,7 @@ class MigrateFreshCommand extends Command
         ];
     }
 
-    public function getModuleName()
+    public function getCMSName()
     {
         $module = $this->argument('module');
 

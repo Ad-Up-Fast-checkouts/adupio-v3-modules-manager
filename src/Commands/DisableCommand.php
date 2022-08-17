@@ -3,7 +3,7 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use Symfony\Component\Console\Input\InputArgument;
 
 class DisableCommand extends Command
@@ -34,15 +34,15 @@ class DisableCommand extends Command
             $this->disableAll();
         }
 
-        /** @var Module $module */
+        /** @var CMS $module */
         $module = $this->laravel['modules']->findOrFail($this->argument('module'));
 
         if ($module->isEnabled()) {
             $module->disable();
 
-            $this->info("Module [{$module}] disabled successful.");
+            $this->info("CMS [{$module}] disabled successful.");
         } else {
-            $this->comment("Module [{$module}] has already disabled.");
+            $this->comment("CMS [{$module}] has already disabled.");
         }
 
         return 0;
@@ -55,16 +55,16 @@ class DisableCommand extends Command
      */
     public function disableAll()
     {
-        /** @var Modules $modules */
+        /** @var CMSs $modules */
         $modules = $this->laravel['modules']->all();
 
         foreach ($modules as $module) {
             if ($module->isEnabled()) {
                 $module->disable();
 
-                $this->info("Module [{$module}] disabled successful.");
+                $this->info("CMS [{$module}] disabled successful.");
             } else {
-                $this->comment("Module [{$module}] has already disabled.");
+                $this->comment("CMS [{$module}] has already disabled.");
             }
         }
     }
@@ -77,7 +77,7 @@ class DisableCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'Module name.'],
+            ['module', InputArgument::OPTIONAL, 'CMS name.'],
         ];
     }
 }

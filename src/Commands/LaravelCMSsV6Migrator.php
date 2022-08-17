@@ -6,9 +6,9 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 
-class LaravelModulesV6Migrator extends Command
+class LaravelCMSsV6Migrator extends Command
 {
     protected $name = 'module:v6:migrate';
     protected $description = 'Migrate laravel-modules v5 modules statuses to v6.';
@@ -20,7 +20,7 @@ class LaravelModulesV6Migrator extends Command
         $modules = $this->laravel['modules'];
 
         $modules = $modules->all();
-        /** @var Module $module */
+        /** @var CMS $module */
         foreach ($modules as $module) {
             if ($module->json()->get('active') === 1) {
                 $module->enable();
@@ -32,7 +32,7 @@ class LaravelModulesV6Migrator extends Command
             }
         }
         $this->info('All modules have been migrated.');
-        $this->table(['Module name', 'Status'], $moduleStatuses);
+        $this->table(['CMS name', 'Status'], $moduleStatuses);
 
         return 0;
     }

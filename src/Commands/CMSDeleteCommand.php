@@ -5,7 +5,7 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 
-class ModuleDeleteCommand extends Command
+class CMSDeleteCommand extends Command
 {
     protected $name = 'module:delete';
     protected $description = 'Delete a module from the application';
@@ -14,7 +14,7 @@ class ModuleDeleteCommand extends Command
     {
         $this->laravel['modules']->delete($this->argument('module'));
 
-        $this->info("Module {$this->argument('module')} has been deleted.");
+        $this->info("CMS {$this->argument('module')} has been deleted.");
 
         return 0;
     }

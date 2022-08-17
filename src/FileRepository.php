@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
 use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\InvalidAssetPath;
-use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\CMSNotFoundException;
 use AdUpFastcheckouts\adupiov3modulesmanager\Process\Installer;
 use AdUpFastcheckouts\adupiov3modulesmanager\Process\Updater;
 
@@ -124,14 +124,14 @@ abstract class FileRepository implements RepositoryInterface, Countable
     }
 
     /**
-     * Creates a new Module instance
+     * Creates a new CMS instance
      *
      * @param Container $app
      * @param string $args
      * @param string $path
-     * @return \AdUpFastcheckouts\adupiov3modulesmanager\Module
+     * @return \AdUpFastcheckouts\adupiov3modulesmanager\CMS
      */
-    abstract protected function createModule(...$args);
+    abstract protected function createCMS(...$args);
 
     /**
      * Get & scan all modules.
@@ -152,7 +152,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
             foreach ($manifests as $manifest) {
                 $name = Json::make($manifest)->get('name');
 
-                $modules[$name] = $this->createModule($this->app, $name, dirname($manifest));
+                $modules[$name] = $this->createCMS($this->app, $name, dirname($manifest));
             }
         }
 
@@ -187,7 +187,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
         foreach ($cached as $name => $module) {
             $path = $module['path'];
 
-            $modules[$name] = $this->createModule($this->app, $name, $path);
+            $modules[$name] = $this->createCMS($this->app, $name, $path);
         }
 
         return $modules;
@@ -226,7 +226,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
     {
         $modules = [];
 
-        /** @var Module $module */
+        /** @var CMS $module */
         foreach ($this->all() as $name => $module) {
             if ($module->isStatus($status)) {
                 $modules[$name] = $module;
@@ -289,7 +289,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
     {
         $modules = $this->allEnabled();
 
-        uasort($modules, function (Module $a, Module $b) use ($direction) {
+        uasort($modules, function (CMS $a, CMS $b) use ($direction) {
             if ($a->get('priority') === $b->get('priority')) {
                 return 0;
             }
@@ -309,7 +309,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      */
     public function getPath(): string
     {
-        return $this->path ?: $this->config('paths.modules', base_path('Modules'));
+        return $this->path ?: $this->config('paths.modules', base_path('CMSs'));
     }
 
     /**
@@ -381,9 +381,9 @@ abstract class FileRepository implements RepositoryInterface, Countable
      *
      * @param $name
      *
-     * @return Module
+     * @return CMS
      *
-     * @throws ModuleNotFoundException
+     * @throws CMSNotFoundException
      */
     public function findOrFail(string $name)
     {
@@ -393,7 +393,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
             return $module;
         }
 
-        throw new ModuleNotFoundException("Module [{$name}] does not exist!");
+        throw new CMSNotFoundException("CMS [{$name}] does not exist!");
     }
 
     /**
@@ -415,11 +415,11 @@ abstract class FileRepository implements RepositoryInterface, Countable
      *
      * @return string
      */
-    public function getModulePath($module)
+    public function getCMSPath($module)
     {
         try {
             return $this->findOrFail($module)->getPath() . '/';
-        } catch (ModuleNotFoundException $e) {
+        } catch (CMSNotFoundException $e) {
             return $this->getPath() . '/' . Str::studly($module) . '/';
         }
     }
@@ -465,7 +465,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      *
      * @param $name
      *
-     * @throws ModuleNotFoundException
+     * @throws CMSNotFoundException
      */
     public function setUsed($name)
     {
@@ -487,7 +487,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
     /**
      * Get module used for cli session.
      * @return string
-     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\CMSNotFoundException
      */
     public function getUsedNow(): string
     {
@@ -523,7 +523,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
     public function asset($asset): string
     {
         if (Str::contains($asset, ':') === false) {
-            throw InvalidAssetPath::missingModuleName($asset);
+            throw InvalidAssetPath::missingCMSName($asset);
         }
         list($name, $url) = explode(':', $asset);
 
@@ -554,7 +554,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      * Enabling a specific module.
      * @param string $name
      * @return void
-     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\CMSNotFoundException
      */
     public function enable($name)
     {
@@ -565,7 +565,7 @@ abstract class FileRepository implements RepositoryInterface, Countable
      * Disabling a specific module.
      * @param string $name
      * @return void
-     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\CMSNotFoundException
      */
     public function disable($name)
     {

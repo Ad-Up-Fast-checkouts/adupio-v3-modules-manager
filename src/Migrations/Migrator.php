@@ -5,14 +5,14 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Migrations;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 
 class Migrator
 {
     /**
-     * Module instance.
-     * @var Module
+     * CMS instance.
+     * @var CMS
      */
     protected $module;
 
@@ -32,10 +32,10 @@ class Migrator
 
     /**
      * Create new instance.
-     * @param Module $module
+     * @param CMS $module
      * @param Application $application
      */
-    public function __construct(Module $module, Application $application)
+    public function __construct(CMS $module, Application $application)
     {
         $this->module = $module;
         $this->laravel = $application;
@@ -58,9 +58,9 @@ class Migrator
     }
 
     /**
-     * @return Module
+     * @return CMS
      */
-    public function getModule()
+    public function getCMS()
     {
         return $this->module;
     }

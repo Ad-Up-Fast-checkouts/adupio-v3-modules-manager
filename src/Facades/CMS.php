@@ -4,7 +4,7 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Module extends Facade
+class CMS extends Facade
 {
     /**
      * Get the registered name of the component.

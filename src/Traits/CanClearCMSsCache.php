@@ -2,7 +2,7 @@
 
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Traits;
 
-trait CanClearModulesCache
+trait CanClearCMSsCache
 {
     /**
      * Clear the modules cache if it is enabled

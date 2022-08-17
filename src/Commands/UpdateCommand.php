@@ -3,12 +3,12 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 
 class UpdateCommand extends Command
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The console command name.
@@ -32,26 +32,26 @@ class UpdateCommand extends Command
         $name = $this->argument('module');
 
         if ($name) {
-            $this->updateModule($name);
+            $this->updateCMS($name);
 
             return 0;
         }
 
-        /** @var \AdUpFastcheckouts\adupiov3modulesmanager\Module $module */
+        /** @var \AdUpFastcheckouts\adupiov3modulesmanager\CMS $module */
         foreach ($this->laravel['modules']->getOrdered() as $module) {
-            $this->updateModule($module->getName());
+            $this->updateCMS($module->getName());
         }
 
         return 0;
     }
 
-    protected function updateModule($name)
+    protected function updateCMS($name)
     {
         $this->line('Running for module: <info>' . $name . '</info>');
 
         $this->laravel['modules']->update($name);
 
-        $this->info("Module [{$name}] updated successfully.");
+        $this->info("CMS [{$name}] updated successfully.");
     }
 
     /**

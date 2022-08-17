@@ -5,13 +5,13 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 use Illuminate\Support\Str;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class ResourceMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     protected $argumentName = 'name';
     protected $name = 'module:make-resource';
@@ -49,7 +49,7 @@ class ResourceMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
             'NAMESPACE' => $this->getClassNamespace($module),
@@ -62,7 +62,7 @@ class ResourceMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $resourcePath = GenerateConfigReader::read('resource');
 

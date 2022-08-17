@@ -3,7 +3,7 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use Symfony\Component\Console\Input\InputOption;
 
 class ListCommand extends Command
@@ -41,8 +41,8 @@ class ListCommand extends Command
     {
         $rows = [];
 
-        /** @var Module $module */
-        foreach ($this->getModules() as $module) {
+        /** @var CMS $module */
+        foreach ($this->getCMSs() as $module) {
             $rows[] = [
                 $module->getName(),
                 $module->isEnabled() ? 'Enabled' : 'Disabled',
@@ -54,7 +54,7 @@ class ListCommand extends Command
         return $rows;
     }
 
-    public function getModules()
+    public function getCMSs()
     {
         switch ($this->option('only')) {
             case 'enabled':

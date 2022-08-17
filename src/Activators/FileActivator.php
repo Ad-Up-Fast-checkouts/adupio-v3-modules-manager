@@ -8,7 +8,7 @@ use Illuminate\Container\Container;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\ActivatorInterface;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 
 class FileActivator implements ActivatorInterface
 {
@@ -65,7 +65,7 @@ class FileActivator implements ActivatorInterface
         $this->statusesFile = $this->config('statuses-file');
         $this->cacheKey = $this->config('cache-key');
         $this->cacheLifetime = $this->config('cache-lifetime');
-        $this->modulesStatuses = $this->getModulesStatuses();
+        $this->modulesStatuses = $this->getCMSsStatuses();
     }
 
     /**
@@ -93,7 +93,7 @@ class FileActivator implements ActivatorInterface
     /**
      * @inheritDoc
      */
-    public function enable(Module $module): void
+    public function enable(CMS $module): void
     {
         $this->setActiveByName($module->getName(), true);
     }
@@ -101,7 +101,7 @@ class FileActivator implements ActivatorInterface
     /**
      * @inheritDoc
      */
-    public function disable(Module $module): void
+    public function disable(CMS $module): void
     {
         $this->setActiveByName($module->getName(), false);
     }
@@ -109,7 +109,7 @@ class FileActivator implements ActivatorInterface
     /**
      * @inheritDoc
      */
-    public function hasStatus(Module $module, bool $status): bool
+    public function hasStatus(CMS $module, bool $status): bool
     {
         if (!isset($this->modulesStatuses[$module->getName()])) {
             return $status === false;
@@ -121,7 +121,7 @@ class FileActivator implements ActivatorInterface
     /**
      * @inheritDoc
      */
-    public function setActive(Module $module, bool $active): void
+    public function setActive(CMS $module, bool $active): void
     {
         $this->setActiveByName($module->getName(), $active);
     }
@@ -139,7 +139,7 @@ class FileActivator implements ActivatorInterface
     /**
      * @inheritDoc
      */
-    public function delete(Module $module): void
+    public function delete(CMS $module): void
     {
         if (!isset($this->modulesStatuses[$module->getName()])) {
             return;
@@ -177,7 +177,7 @@ class FileActivator implements ActivatorInterface
      * @return array
      * @throws FileNotFoundException
      */
-    private function getModulesStatuses(): array
+    private function getCMSsStatuses(): array
     {
         if (!$this->config->get('modules.cache.enabled')) {
             return $this->readJson();

@@ -3,16 +3,16 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Support\Str;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class ProviderMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The name of argument name.
@@ -74,14 +74,14 @@ class ProviderMakeCommand extends GeneratorCommand
     {
         $stub = $this->option('master') ? 'scaffold/provider' : 'provider';
 
-        /** @var Module $module */
-        $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+        /** @var CMS $module */
+        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/' . $stub . '.stub', [
             'NAMESPACE'         => $this->getClassNamespace($module),
             'CLASS'             => $this->getClass(),
             'LOWER_NAME'        => $module->getLowerName(),
-            'MODULE'            => $this->getModuleName(),
+            'MODULE'            => $this->getCMSName(),
             'NAME'              => $this->getFileName(),
             'STUDLY_NAME'       => $module->getStudlyName(),
             'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
@@ -98,7 +98,7 @@ class ProviderMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $generatorPath = GenerateConfigReader::read('provider');
 

@@ -4,7 +4,7 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager;
 
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
 
-class LumenModulesServiceProvider extends ModulesServiceProvider
+class LumenCMSsServiceProvider extends CMSsServiceProvider
 {
     /**
      * Booting the package.
@@ -21,7 +21,7 @@ class LumenModulesServiceProvider extends ModulesServiceProvider
     {
         $this->registerNamespaces();
         $this->registerServices();
-        $this->registerModules();
+        $this->registerCMSs();
         $this->registerProviders();
     }
 

@@ -11,7 +11,7 @@ use AdUpFastcheckouts\adupiov3modulesmanager\FileRepository;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
 
-class ModuleGenerator extends Generator
+class CMSGenerator extends Generator
 {
     /**
      * The module name will created.
@@ -51,7 +51,7 @@ class ModuleGenerator extends Generator
     /**
      * The module instance.
      *
-     * @var \AdUpFastcheckouts\adupiov3modulesmanager\Module
+     * @var \AdUpFastcheckouts\adupiov3modulesmanager\CMS
      */
     protected $module;
 
@@ -227,9 +227,9 @@ class ModuleGenerator extends Generator
     /**
      * Get the module instance.
      *
-     * @return \AdUpFastcheckouts\adupiov3modulesmanager\Module
+     * @return \AdUpFastcheckouts\adupiov3modulesmanager\CMS
      */
-    public function getModule()
+    public function getCMS()
     {
         return $this->module;
     }
@@ -241,7 +241,7 @@ class ModuleGenerator extends Generator
      *
      * @return $this
      */
-    public function setModule($module)
+    public function setCMS($module)
     {
         $this->module = $module;
 
@@ -293,7 +293,7 @@ class ModuleGenerator extends Generator
             if ($this->force) {
                 $this->module->delete($name);
             } else {
-                $this->console->error("Module [{$name}] already exist!");
+                $this->console->error("CMS [{$name}] already exist!");
 
                 return E_ERROR;
             }
@@ -301,7 +301,7 @@ class ModuleGenerator extends Generator
 
         $this->generateFolders();
 
-        $this->generateModuleJsonFile();
+        $this->generateCMSJsonFile();
 
         if ($this->type !== 'plain') {
             $this->generateFiles();
@@ -309,12 +309,12 @@ class ModuleGenerator extends Generator
         }
 
         if ($this->type === 'plain') {
-            $this->cleanModuleJsonFile();
+            $this->cleanCMSJsonFile();
         }
 
         $this->activator->setActiveByName($name, $this->isActive);
 
-        $this->console->info("Module [{$name}] created successfully.");
+        $this->console->info("CMS [{$name}] created successfully.");
 
         return 0;
     }
@@ -331,7 +331,7 @@ class ModuleGenerator extends Generator
                 continue;
             }
 
-            $path = $this->module->getModulePath($this->getName()) . '/' . $folder->getPath();
+            $path = $this->module->getCMSPath($this->getName()) . '/' . $folder->getPath();
 
             $this->filesystem->makeDirectory($path, 0755, true);
             if (config('modules.stubs.gitkeep')) {
@@ -356,7 +356,7 @@ class ModuleGenerator extends Generator
     public function generateFiles()
     {
         foreach ($this->getFiles() as $stub => $file) {
-            $path = $this->module->getModulePath($this->getName()) . $file;
+            $path = $this->module->getCMSPath($this->getName()) . $file;
 
             if (!$this->filesystem->isDirectory($dir = dirname($path))) {
                 $this->filesystem->makeDirectory($dir, 0775, true);
@@ -463,9 +463,9 @@ class ModuleGenerator extends Generator
     /**
      * Generate the module.json file
      */
-    private function generateModuleJsonFile()
+    private function generateCMSJsonFile()
     {
-        $path = $this->module->getModulePath($this->getName()) . 'module.json';
+        $path = $this->module->getCMSPath($this->getName()) . 'module.json';
 
         if (!$this->filesystem->isDirectory($dir = dirname($path))) {
             $this->filesystem->makeDirectory($dir, 0775, true);
@@ -480,12 +480,12 @@ class ModuleGenerator extends Generator
      * Remove the default service provider that was added in the module.json file
      * This is needed when a --plain module was created
      */
-    private function cleanModuleJsonFile()
+    private function cleanCMSJsonFile()
     {
-        $path = $this->module->getModulePath($this->getName()) . 'module.json';
+        $path = $this->module->getCMSPath($this->getName()) . 'module.json';
 
         $content = $this->filesystem->get($path);
-        $namespace = $this->getModuleNamespaceReplacement();
+        $namespace = $this->getCMSNamespaceReplacement();
         $studlyName = $this->getStudlyNameReplacement();
 
         $provider = '"' . $namespace . '\\\\' . $studlyName . '\\\\Providers\\\\' . $studlyName . 'ServiceProvider"';
@@ -530,7 +530,7 @@ class ModuleGenerator extends Generator
      *
      * @return string
      */
-    protected function getModuleNamespaceReplacement()
+    protected function getCMSNamespaceReplacement()
     {
         return str_replace('\\', '\\\\', $this->module->config('namespace'));
     }

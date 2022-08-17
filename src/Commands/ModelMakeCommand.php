@@ -5,13 +5,13 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 use Illuminate\Support\Str;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class ModelMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The name of argument name.
@@ -126,7 +126,7 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/model.stub', [
             'NAME'              => $this->getModelName(),
@@ -134,7 +134,7 @@ class ModelMakeCommand extends GeneratorCommand
             'NAMESPACE'         => $this->getClassNamespace($module),
             'CLASS'             => $this->getClass(),
             'LOWER_NAME'        => $module->getLowerName(),
-            'MODULE'            => $this->getModuleName(),
+            'MODULE'            => $this->getCMSName(),
             'STUDLY_NAME'       => $module->getStudlyName(),
             'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
         ]))->render();
@@ -145,7 +145,7 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $modelPath = GenerateConfigReader::read('model');
 

@@ -4,11 +4,11 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
 use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\ActivatorInterface;
-use AdUpFastcheckouts\adupiov3modulesmanager\Generators\ModuleGenerator;
+use AdUpFastcheckouts\adupiov3modulesmanager\Generators\CMSGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class ModuleMakeCommand extends Command
+class CMSMakeCommand extends Command
 {
     /**
      * The console command name.
@@ -33,14 +33,14 @@ class ModuleMakeCommand extends Command
         $success = true;
 
         foreach ($names as $name) {
-            $code = with(new ModuleGenerator($name))
+            $code = with(new CMSGenerator($name))
                 ->setFilesystem($this->laravel['files'])
-                ->setModule($this->laravel['modules'])
+                ->setCMS($this->laravel['modules'])
                 ->setConfig($this->laravel['config'])
                 ->setActivator($this->laravel[ActivatorInterface::class])
                 ->setConsole($this)
                 ->setForce($this->option('force'))
-                ->setType($this->getModuleType())
+                ->setType($this->getCMSType())
                 ->setActive(!$this->option('disabled'))
                 ->generate();
 
@@ -80,7 +80,7 @@ class ModuleMakeCommand extends Command
     *
     * @return string
     */
-    private function getModuleType()
+    private function getCMSType()
     {
         $isPlain = $this->option('plain');
         $isApi = $this->option('api');

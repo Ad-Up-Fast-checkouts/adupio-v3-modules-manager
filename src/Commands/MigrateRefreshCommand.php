@@ -3,13 +3,13 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class MigrateRefreshCommand extends Command
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The console command name.
@@ -32,27 +32,27 @@ class MigrateRefreshCommand extends Command
     {
         $module = $this->argument('module');
 
-        if ($module && !$this->getModuleName()) {
-            $this->error("Module [$module] does not exists.");
+        if ($module && !$this->getCMSName()) {
+            $this->error("CMS [$module] does not exists.");
 
             return E_ERROR;
         }
 
         $this->call('module:migrate-reset', [
-            'module' => $this->getModuleName(),
+            'module' => $this->getCMSName(),
             '--database' => $this->option('database'),
             '--force' => $this->option('force'),
         ]);
 
         $this->call('module:migrate', [
-            'module' => $this->getModuleName(),
+            'module' => $this->getCMSName(),
             '--database' => $this->option('database'),
             '--force' => $this->option('force'),
         ]);
 
         if ($this->option('seed')) {
             $this->call('module:seed', [
-                'module' => $this->getModuleName(),
+                'module' => $this->getCMSName(),
             ]);
         }
 
@@ -85,7 +85,7 @@ class MigrateRefreshCommand extends Command
         ];
     }
 
-    public function getModuleName()
+    public function getCMSName()
     {
         $module = $this->argument('module');
 

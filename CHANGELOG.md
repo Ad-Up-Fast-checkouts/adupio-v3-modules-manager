@@ -13,7 +13,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 ### Added 
 
-- Added option to publish stubs for modules `php artisan vendor:publish --provider="AdUpFastcheckouts\adupiov3modulesmanager\LaravelModulesServiceProvider" --tag="stubs"`
+- Added option to publish stubs for modules `php artisan vendor:publish --provider="AdUpFastcheckouts\adupiov3modulesmanager\LaravelCMSsServiceProvider" --tag="stubs"`
 
 ### Changed
 
@@ -127,7 +127,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 - Properly guessing the namespace from the path (in `GeneratorPath` class)
 - Fixing generation of resource file if the resource has been disabled to generate
 - Fix when using a custom service provider namespace, namespace is correctly referenced in module.json and compose.json
-- Fix when using custom service provider namespace, module path is correctly referenced in the `RouteServiceProvider` and `ModuleServiceProvider`
+- Fix when using custom service provider namespace, module path is correctly referenced in the `RouteServiceProvider` and `CMSServiceProvider`
 - Fix when using a custom path for controllers in the controller stub
 
 ## 6.1.0 - 2019-11-01
@@ -159,13 +159,13 @@ All Notable changes to `laravel-modules` will be documented in this file.
     This allows to have the content of the module under an `src/` folder for example.
 - **BREAKING** New way to handle active and inactive modules.
 
-    Modules don't store their active status in their module.json file anymore, but in a file under the storage folder.
+    CMSs don't store their active status in their module.json file anymore, but in a file under the storage folder.
     Run `php artisan module:v6:migrate` to use the new system.
-- **BREAKING** Renamed method `enabled` to `isEnabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\Module`.
-- **BREAKING** Renamed method `disabled` to `isDisabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\Module`.
+- **BREAKING** Renamed method `enabled` to `isEnabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\CMS`.
+- **BREAKING** Renamed method `disabled` to `isDisabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\CMS`.
 - **BREAKING** Renamed method `enabled` to `isEnabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\FileRepository`.
 - **BREAKING** Renamed method `disabled` to `isDisabled` in `\AdUpFastcheckouts\adupiov3modulesmanager\FileRepository`.
-- **BREAKING** Removed the `__get` magic method on the `\AdUpFastcheckouts\adupiov3modulesmanager\Module` class. Use `get()` or `json()->get()` instead.
+- **BREAKING** Removed the `__get` magic method on the `\AdUpFastcheckouts\adupiov3modulesmanager\CMS` class. Use `get()` or `json()->get()` instead.
 - The `module:make-listener` command now correctly uses the namespace configuration
 - The generated Factories now has type hints for the `\Illuminate\Database\Eloquent\Factory` class
 - Improved foreign key constraint generation
@@ -181,7 +181,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 - Fixing the `RouteServiceProvider` generation to properly use the `routes/web` and `routes/api` stubs
 - Replacing `@stop` with `@endsection` in the view stub file
-- `Module` class does not extend Laravel's Service Provider class anymore
+- `CMS` class does not extend Laravel's Service Provider class anymore
 
 ## 5.0.0 - 2019-03-18
 
@@ -205,7 +205,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 - Updated to laravel mix 4
 - Add `--api` argument to `module:make-controller` command
-- Seeding modules outside out `Modules` namespace
+- Seeding modules outside out `CMSs` namespace
 
 ## 4.0.0 - 2018-09-30
 
@@ -284,8 +284,8 @@ All Notable changes to `laravel-modules` will be documented in this file.
 ## Removed
 
 - Dropped php 7.0 support
-- **BC:** `Module` class: Deprecated `active()` method, use `enabled()`
-- **BC:** `Module` class: Deprecated `notActive()` method, use `disabled()`
+- **BC:** `CMS` class: Deprecated `active()` method, use `enabled()`
+- **BC:** `CMS` class: Deprecated `notActive()` method, use `disabled()`
 - **BC:** `Repository` class: Deprecated `addPath()` method, use `addLocation()`
 - **BC:** `Repository` class: Deprecated `get()` method, use `find()`
 - **BC:** `Repository` class: Deprecated `getUsed()` method, use `getUsedNow()`
@@ -353,7 +353,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 ## Changed
 
 - Improved error output of the `module:seed` command
-- Marking methods that served as proxies in `Module` and `Repository` classes as deprecated for next major
+- Marking methods that served as proxies in `CMS` and `Repository` classes as deprecated for next major
 - Fixed `module:make` and `module:make-provider` to generate the correct master service provider
 - Tests: tests are now using `spatie/phpunit-snapshot-assertions` to make sure the generated files have the correct content
 - Adding a sync option to the `module:make-job` command to make a synchronous job class
@@ -410,7 +410,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 ### Changed
 
 - Allow migrate-refresh command to be run without module argument
-- Module name was added to the module enable and disable events
+- CMS name was added to the module enable and disable events
 
 ## 1.27.1 - 2017-07-31
 
@@ -434,7 +434,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 ### Changed
 
-- Throw an exception if asset name structure was not correct when using `{!! Module::asset() !!}`
+- Throw an exception if asset name structure was not correct when using `{!! CMS::asset() !!}`
 - Create the module used file if non existent. Will provide for a better error message if module is omitted in console commands without a module:use.
 
 ## 1.25.1 - 2017-06-29
@@ -480,7 +480,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 ### Added
 
-- Added the `Macroable` trait to the `Module` class.
+- Added the `Macroable` trait to the `CMS` class.
 
 ### Changed
 
@@ -534,8 +534,8 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 ### Added
 
-- Module requirements (PR #117)
-- Added `Macroable` trait to `Module` class (PR #116)
+- CMS requirements (PR #117)
+- Added `Macroable` trait to `CMS` class (PR #116)
 
 ### Changed
 
@@ -544,7 +544,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 - Add tests for all the different migration structures above
 - Fix: respecting order in reverse migrations (PR #98)
 - Fix: `module:reset` and `module:migrate-rollback` didn't have `--database` option (PR #88)
-- Fix: `Module::asset()`, removed obsolete backslash. (PR #91)
+- Fix: `CMS::asset()`, removed obsolete backslash. (PR #91)
 
 ## 1.14.0 - 2016-10-19
 
@@ -555,7 +555,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 ### Changed
 
 - Usage of the `lists()` method on the laravel collection has been removed in favor of `pluck()`
-- Modules can now overwrite the default migration and seed paths in the `module.json`  file
+- CMSs can now overwrite the default migration and seed paths in the `module.json`  file
 
 ## 0.13.1 - 2016-09-09
 
@@ -631,7 +631,7 @@ All Notable changes to `laravel-modules` will be documented in this file.
 
 ### Fixed
 
-- Module generation namespace now works with `StudlyCase` ([Issue #14](https://github.com/nWidart/laravel-modules/issues/14))
+- CMS generation namespace now works with `StudlyCase` ([Issue #14](https://github.com/nWidart/laravel-modules/issues/14))
 - No module namespace fix (#13)
 
 ### Changed

@@ -25,7 +25,7 @@ class SetupCommand extends Command
      */
     public function handle(): int
     {
-        $code = $this->generateModulesFolder();
+        $code = $this->generateCMSsFolder();
 
         return $this->generateAssetsFolder() | $code;
     }
@@ -33,12 +33,12 @@ class SetupCommand extends Command
     /**
      * Generate the modules folder.
      */
-    public function generateModulesFolder()
+    public function generateCMSsFolder()
     {
         return $this->generateDirectory(
             $this->laravel['modules']->config('paths.modules'),
-            'Modules directory created successfully',
-            'Modules directory already exist'
+            'CMSs directory created successfully',
+            'CMSs directory already exist'
         );
     }
 

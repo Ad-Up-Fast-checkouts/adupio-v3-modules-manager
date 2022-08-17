@@ -46,7 +46,7 @@ class PublishMigrationCommand extends Command
     /**
      * Publish migration for the specified module.
      *
-     * @param \AdUpFastcheckouts\adupiov3modulesmanager\Module $module
+     * @param \AdUpFastcheckouts\adupiov3modulesmanager\CMS $module
      */
     public function publish($module)
     {

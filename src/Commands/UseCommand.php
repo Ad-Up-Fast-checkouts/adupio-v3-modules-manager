@@ -30,14 +30,14 @@ class UseCommand extends Command
         $module = Str::studly($this->argument('module'));
 
         if (!$this->laravel['modules']->has($module)) {
-            $this->error("Module [{$module}] does not exists.");
+            $this->error("CMS [{$module}] does not exists.");
 
             return E_ERROR;
         }
 
         $this->laravel['modules']->setUsed($module);
 
-        $this->info("Module [{$module}] used successfully.");
+        $this->info("CMS [{$module}] used successfully.");
 
         return 0;
     }

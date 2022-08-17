@@ -3,7 +3,7 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use Symfony\Component\Console\Input\InputArgument;
 
 class EnableCommand extends Command
@@ -36,15 +36,15 @@ class EnableCommand extends Command
             return 0;
         }
 
-        /** @var Module $module */
+        /** @var CMS $module */
         $module = $this->laravel['modules']->findOrFail($this->argument('module'));
 
         if ($module->isDisabled()) {
             $module->enable();
 
-            $this->info("Module [{$module}] enabled successful.");
+            $this->info("CMS [{$module}] enabled successful.");
         } else {
-            $this->comment("Module [{$module}] has already enabled.");
+            $this->comment("CMS [{$module}] has already enabled.");
         }
 
         return 0;
@@ -57,16 +57,16 @@ class EnableCommand extends Command
      */
     public function enableAll()
     {
-        /** @var Modules $modules */
+        /** @var CMSs $modules */
         $modules = $this->laravel['modules']->all();
 
         foreach ($modules as $module) {
             if ($module->isDisabled()) {
                 $module->enable();
 
-                $this->info("Module [{$module}] enabled successful.");
+                $this->info("CMS [{$module}] enabled successful.");
             } else {
-                $this->comment("Module [{$module}] has already enabled.");
+                $this->comment("CMS [{$module}] has already enabled.");
             }
         }
     }
@@ -79,7 +79,7 @@ class EnableCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::OPTIONAL, 'Module name.'],
+            ['module', InputArgument::OPTIONAL, 'CMS name.'],
         ];
     }
 }

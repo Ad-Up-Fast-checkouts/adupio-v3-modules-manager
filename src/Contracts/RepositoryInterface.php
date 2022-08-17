@@ -2,8 +2,8 @@
 
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Contracts;
 
-use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\CMSNotFoundException;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 
 interface RepositoryInterface
 {
@@ -83,7 +83,7 @@ interface RepositoryInterface
      * Find a specific module.
      *
      * @param $name
-     * @return Module|null
+     * @return CMS|null
      */
     public function find(string $name);
 
@@ -92,7 +92,7 @@ interface RepositoryInterface
      *
      * @param $name
      * @return array
-     * @throws ModuleNotFoundException
+     * @throws CMSNotFoundException
      */
     public function findRequirements($name): array;
 
@@ -105,7 +105,7 @@ interface RepositoryInterface
      */
     public function findOrFail(string $name);
 
-    public function getModulePath($moduleName);
+    public function getCMSPath($moduleName);
 
     /**
      * @return \Illuminate\Filesystem\Filesystem
@@ -131,7 +131,7 @@ interface RepositoryInterface
     /**
      * Find a specific module by its alias.
      * @param string $alias
-     * @return Module|void
+     * @return CMS|void
      */
     public function findByAlias(string $alias);
 
@@ -157,7 +157,7 @@ interface RepositoryInterface
      * Delete a specific module.
      * @param string $module
      * @return bool
-     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\ModuleNotFoundException
+     * @throws \AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\CMSNotFoundException
      */
     public function delete(string $module): bool;
 
@@ -165,7 +165,7 @@ interface RepositoryInterface
      * Determine whether the given module is activated.
      * @param string $name
      * @return bool
-     * @throws ModuleNotFoundException
+     * @throws CMSNotFoundException
      */
     public function isEnabled(string $name): bool;
 
@@ -173,7 +173,7 @@ interface RepositoryInterface
      * Determine whether the given module is not activated.
      * @param string $name
      * @return bool
-     * @throws ModuleNotFoundException
+     * @throws CMSNotFoundException
      */
     public function isDisabled(string $name): bool;
 }

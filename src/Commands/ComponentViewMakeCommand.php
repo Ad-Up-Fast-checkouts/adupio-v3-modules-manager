@@ -6,12 +6,12 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Str;
 use NAdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use NAdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use NAdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 
 class ComponentViewMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The name of argument name.
@@ -60,7 +60,7 @@ class ComponentViewMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
         $factoryPath = GenerateConfigReader::read('component-view');
 
         return $path . $factoryPath->getPath() . '/' . $this->getFileName();

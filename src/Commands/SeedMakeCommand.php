@@ -5,15 +5,15 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 use Illuminate\Support\Str;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CanClearModulesCache;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CanClearCMSsCache;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class SeedMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
-    use CanClearModulesCache;
+    use CMSCommandTrait;
+    use CanClearCMSsCache;
 
     protected $argumentName = 'name';
 
@@ -66,11 +66,11 @@ class SeedMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/seeder.stub', [
             'NAME' => $this->getSeederName(),
-            'MODULE' => $this->getModuleName(),
+            'MODULE' => $this->getCMSName(),
             'NAMESPACE' => $this->getClassNamespace($module),
 
         ]))->render();
@@ -83,7 +83,7 @@ class SeedMakeCommand extends GeneratorCommand
     {
         $this->clearCache();
 
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $seederPath = GenerateConfigReader::read('seeder');
 

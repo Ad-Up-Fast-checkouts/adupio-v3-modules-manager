@@ -7,7 +7,7 @@ use AdUpFastcheckouts\adupiov3modulesmanager\Providers\BootstrapServiceProvider;
 use AdUpFastcheckouts\adupiov3modulesmanager\Providers\ConsoleServiceProvider;
 use AdUpFastcheckouts\adupiov3modulesmanager\Providers\ContractsServiceProvider;
 
-abstract class ModulesServiceProvider extends ServiceProvider
+abstract class CMSsServiceProvider extends ServiceProvider
 {
     /**
      * Booting the package.
@@ -26,7 +26,7 @@ abstract class ModulesServiceProvider extends ServiceProvider
     /**
      * Register all modules.
      */
-    protected function registerModules()
+    protected function registerCMSs()
     {
         $this->app->register(BootstrapServiceProvider::class);
     }

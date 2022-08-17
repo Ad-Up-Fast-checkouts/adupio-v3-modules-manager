@@ -1,6 +1,6 @@
 {
   "name": "adupfastcheckouts/adupiov3modulesmanager",
-  "description": "Laravel Module management",
+  "description": "Laravel CMS management",
   "keywords": [
     "modules",
     "laravel",
@@ -47,10 +47,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "AdUpFastcheckouts\\adupiov3modulesmanager\\LaravelModulesServiceProvider"
+        "AdUpFastcheckouts\\adupiov3modulesmanager\\LaravelCMSsServiceProvider"
       ],
       "aliases": {
-        "Module": "AdUpFastcheckouts\\adupiov3modulesmanager\\Facades\\Module"
+        "CMS": "AdUpFastcheckouts\\adupiov3modulesmanager\\Facades\\CMS"
       }
     },
     "branch-alias": {

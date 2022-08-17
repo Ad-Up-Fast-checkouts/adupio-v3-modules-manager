@@ -3,7 +3,7 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Console\Command;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS;
 use AdUpFastcheckouts\adupiov3modulesmanager\Publishing\LangPublisher;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -56,7 +56,7 @@ class PublishTranslationCommand extends Command
      */
     public function publish($name)
     {
-        if ($name instanceof Module) {
+        if ($name instanceof CMS) {
             $module = $name;
         } else {
             $module = $this->laravel['modules']->findOrFail($name);

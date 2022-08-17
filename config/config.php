@@ -7,18 +7,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Module Namespace
+    | CMS Namespace
     |--------------------------------------------------------------------------
     |
     | Default module namespace.
     |
     */
 
-    'namespace' => 'Modules',
+    'namespace' => 'CMSs',
 
     /*
     |--------------------------------------------------------------------------
-    | Module Stubs
+    | CMS Stubs
     |--------------------------------------------------------------------------
     |
     | Default module stubs.
@@ -63,7 +63,7 @@ return [
     'paths' => [
         /*
         |--------------------------------------------------------------------------
-        | Modules path
+        | CMSs path
         |--------------------------------------------------------------------------
         |
         | This path used for save the generated module. This path also will be added
@@ -71,10 +71,10 @@ return [
         |
         */
 
-        'modules' => base_path('Modules'),
+        'modules' => base_path('CMSs'),
         /*
         |--------------------------------------------------------------------------
-        | Modules assets path
+        | CMSs assets path
         |--------------------------------------------------------------------------
         |
         | Here you may update the modules assets path.
@@ -159,8 +159,8 @@ return [
         Commands\RouteProviderMakeCommand::class,
         Commands\InstallCommand::class,
         Commands\ListCommand::class,
-        Commands\ModuleDeleteCommand::class,
-        Commands\ModuleMakeCommand::class,
+        Commands\CMSDeleteCommand::class,
+        Commands\CMSMakeCommand::class,
         Commands\FactoryMakeCommand::class,
         Commands\PolicyMakeCommand::class,
         Commands\RequestMakeCommand::class,
@@ -184,7 +184,7 @@ return [
         Commands\UseCommand::class,
         Commands\ResourceMakeCommand::class,
         Commands\TestMakeCommand::class,
-        Commands\LaravelModulesV6Migrator::class,
+        Commands\LaravelCMSsV6Migrator::class,
     ],
 
     /*

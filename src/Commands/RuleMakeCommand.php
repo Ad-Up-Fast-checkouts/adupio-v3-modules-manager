@@ -5,12 +5,12 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 use Illuminate\Support\Str;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 
 class RuleMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The name of argument name.
@@ -58,7 +58,7 @@ class RuleMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub('/rule.stub', [
             'NAMESPACE' => $this->getClassNamespace($module),
@@ -71,7 +71,7 @@ class RuleMakeCommand extends GeneratorCommand
      */
     protected function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $rulePath = GenerateConfigReader::read('rules');
 

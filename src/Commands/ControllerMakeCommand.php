@@ -5,13 +5,13 @@ namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 use Illuminate\Support\Str;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Config\GenerateConfigReader;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
-use AdUpFastcheckouts\adupiov3modulesmanager\Traits\ModuleCommandTrait;
+use AdUpFastcheckouts\adupiov3modulesmanager\Traits\CMSCommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class ControllerMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use CMSCommandTrait;
 
     /**
      * The name of argument being used.
@@ -41,7 +41,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     public function getDestinationFilePath()
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $path = $this->laravel['modules']->getCMSPath($this->getCMSName());
 
         $controllerPath = GenerateConfigReader::read('controller');
 
@@ -53,7 +53,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+        $module = $this->laravel['modules']->findOrFail($this->getCMSName());
 
         return (new Stub($this->getStubName(), [
             'MODULENAME'        => $module->getStudlyName(),
@@ -62,8 +62,8 @@ class ControllerMakeCommand extends GeneratorCommand
             'CLASS_NAMESPACE'   => $this->getClassNamespace($module),
             'CLASS'             => $this->getControllerNameWithoutNamespace(),
             'LOWER_NAME'        => $module->getLowerName(),
-            'MODULE'            => $this->getModuleName(),
-            'NAME'              => $this->getModuleName(),
+            'MODULE'            => $this->getCMSName(),
+            'NAME'              => $this->getCMSName(),
             'STUDLY_NAME'       => $module->getStudlyName(),
             'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
         ]))->render();

@@ -6,7 +6,7 @@ use AdUpFastcheckouts\adupiov3modulesmanager\Contracts\RepositoryInterface;
 use AdUpFastcheckouts\adupiov3modulesmanager\Exceptions\InvalidActivatorClass;
 use AdUpFastcheckouts\adupiov3modulesmanager\Support\Stub;
 
-class LaravelModulesServiceProvider extends ModulesServiceProvider
+class LaravelCMSsServiceProvider extends CMSsServiceProvider
 {
     /**
      * Booting the package.
@@ -14,7 +14,7 @@ class LaravelModulesServiceProvider extends ModulesServiceProvider
     public function boot()
     {
         $this->registerNamespaces();
-        $this->registerModules();
+        $this->registerCMSs();
     }
 
     /**

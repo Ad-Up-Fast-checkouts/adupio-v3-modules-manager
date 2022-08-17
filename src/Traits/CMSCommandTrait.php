@@ -2,14 +2,14 @@
 
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Traits;
 
-trait ModuleCommandTrait
+trait CMSCommandTrait
 {
     /**
      * Get the module name.
      *
      * @return string
      */
-    public function getModuleName()
+    public function getCMSName()
     {
         $module = $this->argument('module') ?: app('modules')->getUsedNow();
 

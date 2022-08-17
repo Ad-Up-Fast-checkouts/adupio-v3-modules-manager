@@ -3,9 +3,9 @@
 namespace AdUpFastcheckouts\adupiov3modulesmanager\Lumen;
 
 use Illuminate\Support\Str;
-use AdUpFastcheckouts\adupiov3modulesmanager\Module as BaseModule;
+use AdUpFastcheckouts\adupiov3modulesmanager\CMS as BaseCMS;
 
-class Module extends BaseModule
+class CMS extends BaseCMS
 {
     /**
      * {@inheritdoc}
