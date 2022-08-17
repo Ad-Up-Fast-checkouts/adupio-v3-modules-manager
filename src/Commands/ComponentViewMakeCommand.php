@@ -1,6 +1,6 @@
 <?php
 
-namespace AdUpFastcheckouts\adupiov3modulesmanager;
+namespace AdUpFastcheckouts\adupiov3modulesmanager\Commands;
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Str;
